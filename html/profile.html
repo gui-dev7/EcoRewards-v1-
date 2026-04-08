@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Configurações de Perfil</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/profile.css" />
+
+    </head>
+    <body>
+        <!-- Topbar -->
+        <header class="topbar">
+            <a href="b2c-dashboard.html" class="back-btn" id="dynamic-back-btn"> <i class="ph ph-arrow-left"></i> Voltar ao Dashboard </a>
+            <div class="topbar-actions">
+                <button class="icon-btn" id="themeToggle"><i class="ph ph-moon"></i></button>
+            </div>
+        </header>
+
+        <!-- Selector de Protótipo -->
+        <div class="prototype-selector">
+            <span class="prototype-title">Selecione o perfil que deseja visualizar:</span>
+            <div class="proto-tabs-container">
+                <button class="proto-tab active" data-profile="b2c" data-color="#10B981" data-hover="#059669" data-light="#D1FAE5" data-url="b2c-dashboard.html">
+                    <i class="ph-fill ph-user"></i> Cidadão
+                </button>
+                <button class="proto-tab" data-profile="b2b" data-color="#0D9488" data-hover="#0F766E" data-light="#CCFBF1" data-url="b2b-dashboard.html">
+                    <i class="ph-fill ph-buildings"></i> Empresa (B2B)
+                </button>
+                <button class="proto-tab" data-profile="b2g" data-color="#1E3A8A" data-hover="#1E40AF" data-light="#DBEAFE" data-url="b2g-dashboard.html">
+                    <i class="ph-fill ph-bank"></i> Governo (B2G)
+                </button>
+            </div>
+        </div>
+
+        <!-- Layout Principal -->
+        <div class="profile-container">
+            <!-- Menu Lateral de Configurações -->
+            <aside class="settings-nav">
+                <button class="s-nav-item active" data-target="section-personal"><i class="ph ph-user"></i> Informações Pessoais</button>
+                <button class="s-nav-item" data-target="section-security"><i class="ph ph-shield-check"></i> Segurança e Senha</button>
+                <button class="s-nav-item" data-target="section-notifications"><i class="ph ph-bell-ringing"></i> Notificações</button>
+                <button class="s-nav-item" style="color: #ef4444" onclick="showToast('Ação de apagar conta simulada.')"><i class="ph ph-trash"></i> Apagar Conta</button>
+            </aside>
+
+            <!-- Área de Conteúdo -->
+            <main class="settings-content">
+                <!-- ==========================================
+                 SECÇÃO 1: INFORMAÇÕES PESSOAIS (Variável por Perfil)
+                 ========================================== -->
+                <div id="section-personal" class="content-section active">
+                    <!-- 1. PERFIL CIDADÃO (B2C) -->
+                    <div id="view-b2c" class="profile-view active">
+                        <div class="settings-header">
+                            <h2>O Meu Perfil Verde</h2>
+                            <p>Atualize as suas informações para garantir a entrega das suas recompensas.</p>
+                        </div>
+
+                        <div class="avatar-section">
+                            <div class="avatar-circle">
+                                J
+                                <div class="avatar-upload-btn" title="Alterar Foto"><i class="ph ph-camera"></i></div>
+                            </div>
+                            <div>
+                                <h3 id="display-name-b2c" style="font-size: 1.125rem">João Silva</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem">Cidadão Nível Ouro</p>
+                            </div>
+                        </div>
+
+                        <form
+                            onsubmit="
+                                event.preventDefault();
+                                saveProfile('b2c');
+                            "
+                        >
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Nome Completo</label>
+                                    <input type="text" id="input-name-b2c" value="João Silva" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail de Contacto</label>
+                                    <input type="email" value="joao.silva@email.com" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Telemóvel (Para vales e alertas)</label>
+                                    <input type="tel" value="+351 912 345 678" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Chave de Pagamento (IBAN/PIX)</label>
+                                    <input type="text" placeholder="Para recompensas em Cashback" />
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Morada de Entrega (Para brindes físicos)</label>
+                                    <input type="text" value="Rua das Flores, 123, Lisboa" />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-outline">Cancelar</button>
+                                <button type="submit" class="btn-primary">Guardar Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- 2. PERFIL EMPRESA (B2B) -->
+                    <div id="view-b2b" class="profile-view">
+                        <div class="settings-header">
+                            <h2>Perfil do Colaborador</h2>
+                            <p>As suas informações corporativas associadas ao painel ESG da empresa.</p>
+                        </div>
+
+                        <div class="avatar-section">
+                            <div class="avatar-circle">
+                                C
+                                <div class="avatar-upload-btn"><i class="ph ph-camera"></i></div>
+                            </div>
+                            <div>
+                                <h3 id="display-name-b2b" style="font-size: 1.125rem">Carlos Mendes</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem">TechCorp S.A.</p>
+                            </div>
+                        </div>
+
+                        <form
+                            onsubmit="
+                                event.preventDefault();
+                                saveProfile('b2b');
+                            "
+                        >
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Nome do Colaborador</label>
+                                    <input type="text" id="input-name-b2b" value="Carlos Mendes" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail Corporativo</label>
+                                    <input type="email" value="carlos.mendes@techcorp.com" disabled style="background-color: var(--bg-primary); opacity: 0.7" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Departamento</label>
+                                    <select>
+                                        <option>Recursos Humanos</option>
+                                        <option selected>Marketing</option>
+                                        <option>Tecnologia da Informação</option>
+                                        <option>Vendas</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cargo</label>
+                                    <input type="text" value="Gestor de Marketing" />
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Perfil do LinkedIn (Opcional)</label>
+                                    <input type="url" placeholder="https://linkedin.com/in/carlosmendes" />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-outline">Cancelar</button>
+                                <button type="submit" class="btn-primary">Guardar Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- 3. PERFIL GOVERNO (B2G) -->
+                    <div id="view-b2g" class="profile-view">
+                        <div class="settings-header">
+                            <h2>Administração Federal</h2>
+                            <p>Gerencie as informações institucionais e as credenciais de segurança do órgão.</p>
+                        </div>
+
+                        <div class="avatar-section">
+                            <div class="avatar-circle" style="border-radius: 8px">
+                                <i class="ph-fill ph-bank"></i>
+                                <div class="avatar-upload-btn" style="border-radius: 4px"><i class="ph ph-upload-simple"></i></div>
+                            </div>
+                            <div>
+                                <h3 id="display-name-b2g" style="font-size: 1.125rem">Ministério do Ambiente</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem">Acesso de Nível 1</p>
+                            </div>
+                        </div>
+
+                        <form
+                            onsubmit="
+                                event.preventDefault();
+                                saveProfile('b2g');
+                            "
+                        >
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Nome do Órgão / Instituição</label>
+                                    <input type="text" id="input-name-b2g" value="Ministério do Ambiente" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Gestor Responsável</label>
+                                    <input type="text" value="Dr. Roberto Silva" />
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail Oficial</label>
+                                    <input type="email" value="gabinete@ambiente.gov.br" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Região de Atuação</label>
+                                    <select>
+                                        <option selected>Nacional (Brasil)</option>
+                                        <option>Estadual (SP)</option>
+                                        <option>Municipal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-outline">Cancelar</button>
+                                <button type="submit" class="btn-primary">Atualizar Dados do Órgão</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 SECÇÃO 2: SEGURANÇA E SENHA (Comum)
+                 ========================================== -->
+                <div id="section-security" class="content-section">
+                    <div class="settings-header">
+                        <h2>Segurança e Senha</h2>
+                        <p>Mantenha a sua conta segura atualizando a sua senha e ativando a verificação em duas etapas.</p>
+                    </div>
+
+                    <form
+                        onsubmit="
+                            event.preventDefault();
+                            showToast('Senha atualizada com sucesso!');
+                        "
+                    >
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label>Senha Atual</label>
+                                <input type="password" placeholder="••••••••" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Nova Senha</label>
+                                <input type="password" placeholder="Mínimo 8 caracteres" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Confirmar Nova Senha</label>
+                                <input type="password" placeholder="Repita a nova senha" required />
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color)">
+                            <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem">Autenticação de Dois Fatores (2FA)</h3>
+                            <div
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    padding: 1rem;
+                                    background-color: var(--bg-primary);
+                                    border-radius: var(--radius-md);
+                                    border: 1px solid var(--border-color);
+                                "
+                            >
+                                <div>
+                                    <h4 style="font-size: 0.9375rem; font-weight: 600">Proteja a sua conta com 2FA</h4>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary)">Recomendamos o uso de uma app de autenticação (ex: Google Authenticator).</p>
+                                </div>
+                                <div class="toggle-switch" id="toggle-2fa"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Atualizar Senha</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ==========================================
+                 SECÇÃO 3: NOTIFICAÇÕES (Comum)
+                 ========================================== -->
+                <div id="section-notifications" class="content-section">
+                    <div class="settings-header">
+                        <h2>Preferências de Notificação</h2>
+                        <p>Controle como e quando deseja ser contactado pelo sistema EcoRewards.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0">
+                        <!-- Item de Notificação -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--border-color)">
+                            <div>
+                                <h4 style="font-size: 0.9375rem; font-weight: 600">Notificações Push (App)</h4>
+                                <p style="font-size: 0.875rem; color: var(--text-secondary)">Alertas imediatos no telemóvel sobre pontos ganhos e leitura de QR Codes.</p>
+                            </div>
+                            <div class="toggle-switch active"></div>
+                        </div>
+
+                        <!-- Item de Notificação -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--border-color)">
+                            <div>
+                                <h4 style="font-size: 0.9375rem; font-weight: 600">Resumo por E-mail</h4>
+                                <p style="font-size: 0.875rem; color: var(--text-secondary)">Receba um balanço semanal do seu impacto e novas recompensas disponíveis.</p>
+                            </div>
+                            <div class="toggle-switch active"></div>
+                        </div>
+
+                        <!-- Item de Notificação -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--border-color)">
+                            <div>
+                                <h4 style="font-size: 0.9375rem; font-weight: 600">Campanhas e Promoções</h4>
+                                <p style="font-size: 0.875rem; color: var(--text-secondary)">Ofertas especiais de parceiros (ex: Descontos em passagens aéreas e lojas).</p>
+                            </div>
+                            <div class="toggle-switch"></div>
+                        </div>
+
+                        <!-- Item de Notificação -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0">
+                            <div>
+                                <h4 style="font-size: 0.9375rem; font-weight: 600">Alertas de Segurança</h4>
+                                <p style="font-size: 0.875rem; color: var(--text-secondary)">Avisos sobre logins em novos dispositivos ou alterações de senha.</p>
+                            </div>
+                            <!-- Este toggle não pode ser desligado visualmente para dar realismo de segurança -->
+                            <div class="toggle-switch active" style="opacity: 0.5; pointer-events: none"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-primary" onclick="showToast('Preferências de notificação salvas!')">Guardar Preferências</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Toast Container -->
+        <div id="toast-container"></div>
+
+        
+        <script src="../js/profile.js"></script>
+
+    </body>
+</html>

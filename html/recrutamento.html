@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Candidatura</title>
+
+        <!-- Fontes e Ícones -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/recrutamento.css" />
+
+    </head>
+    <body>
+        <main class="split-layout">
+            <!-- LADO ESQUERDO: Visual & Propósito -->
+            <section class="visual-side">
+                <div class="visual-3d-container">
+                    <i class="ph-fill ph-leaf"></i>
+                </div>
+
+                <div class="purpose-content">
+                    <h2>O que buscamos em <span>si</span>.</h2>
+
+                    <div class="purpose-item">
+                        <i class="ph-fill ph-heartbeat purpose-icon"></i>
+                        <div class="purpose-text">
+                            <h4>Paixão pelo Propósito</h4>
+                            <p>Buscamos pessoas que se importam genuinamente com o futuro do planeta e querem construir soluções reais para os problemas climáticos.</p>
+                        </div>
+                    </div>
+
+                    <div class="purpose-item">
+                        <i class="ph-fill ph-rocket-launch purpose-icon"></i>
+                        <div class="purpose-text">
+                            <h4>Mente Inovadora</h4>
+                            <p>Se gosta de desafiar o status quo e usar tecnologia para melhorar processos sociais, este é o seu lugar.</p>
+                        </div>
+                    </div>
+
+                    <div class="purpose-item">
+                        <i class="ph-fill ph-users-three purpose-icon"></i>
+                        <div class="purpose-text">
+                            <h4>Espírito Colaborativo</h4>
+                            <p>Ninguém muda o mundo sozinho. Valorizamos a empatia, o respeito e a vontade de crescer em equipa.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LADO DIREITO: Formulário -->
+            <section class="form-side">
+                <a href="carreiras.html" class="back-link"> <i class="ph-bold ph-arrow-left"></i> Voltar às Vagas </a>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar Tema Escuro">
+                    <i class="ph ph-moon"></i>
+                </button>
+
+                <div class="form-container">
+                    <header class="form-header">
+                        <h3>Envie a sua Candidatura</h3>
+                        <p>Preencha os dados abaixo. Analisaremos o seu perfil com muito cuidado e entraremos em contacto em breve.</p>
+                    </header>
+
+                    <form id="recruitment-form">
+                        <div class="input-group">
+                            <label>Vaga de Interesse</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-briefcase"></i>
+                                <select id="vaga" required>
+                                    <option value="" disabled selected>Selecione uma opção...</option>
+                                    <option value="mobile">Desenvolvedor Mobile (React Native)</option>
+                                    <option value="ai">Especialista em Visão Computacional (IA)</option>
+                                    <option value="community">Gestor de Comunidade & Parceiros</option>
+                                    <option value="espontanea">Candidatura Espontânea</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Nome Completo</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-user"></i>
+                                <input type="text" placeholder="Como gosta de ser chamado(a)" required />
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>E-mail</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-envelope-simple"></i>
+                                <input type="email" placeholder="seu.melhor@email.com" required />
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Telefone / WhatsApp</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-phone"></i>
+                                <input type="tel" placeholder="+351 900 000 000" required />
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Perfil do LinkedIn / Portfólio</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-link"></i>
+                                <input type="url" placeholder="https://linkedin.com/in/seu-perfil" />
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Currículo (PDF, DOCX)</label>
+                            <div class="file-upload-wrapper">
+                                <div class="file-upload-btn" id="file-name-display">
+                                    <i class="ph ph-upload-simple" style="font-size: 2rem"></i>
+                                    <span style="font-weight: 500">Clique ou arraste o ficheiro aqui</span>
+                                    <span style="font-size: 0.75rem">Máx: 5MB</span>
+                                </div>
+                                <input type="file" id="cv-upload" accept=".pdf,.doc,.docx" required />
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Por que quer juntar-se à EcoRewards?</label>
+                            <textarea placeholder="Conte-nos um pouco sobre a sua motivação e experiência..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Enviar Candidatura <i class="ph ph-paper-plane-right"></i></button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toasts -->
+        <div id="toast-container"></div>
+
+        
+        <script src="../js/recrutamento.js"></script>
+
+    </body>
+</html>

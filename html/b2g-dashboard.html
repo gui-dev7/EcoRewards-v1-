@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Gestão Pública & Analytics</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/b2g-dashboard.css" />
+
+    </head>
+    <body>
+        <div class="dashboard-container">
+            <!-- SIDEBAR (Menu Lateral) -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo"><i class="ph-fill ph-bank"></i> EcoRewards</div>
+                    <button class="icon-btn d-md-none menu-toggle" style="display: none; color: white" onclick="document.getElementById('sidebar').classList.remove('active')">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+
+                <div class="gov-badge">
+                    <p class="gov-title">Órgão Gestor</p>
+                    <div class="gov-name">
+                        <div class="gov-icon"><i class="ph ph-buildings"></i></div>
+                        Ministério do Ambiente
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-category">Visão Estratégica</div>
+                    <button class="nav-item active" data-target="dashboard"><i class="ph ph-squares-four"></i> Painel Executivo</button>
+                    <button class="nav-item" data-target="regional"><i class="ph ph-map-trifold"></i> Inteligência Regional</button>
+
+                    <div class="nav-category">Operações & Finanças</div>
+                    <button class="nav-item" data-target="ecopontos"><i class="ph ph-trash"></i> Gestão de Ecopontos</button>
+                    <button class="nav-item" data-target="financeiro"><i class="ph ph-currency-circle-dollar"></i> Balanço & Orçamento</button>
+
+                    <div class="nav-category">Compliance & Dados</div>
+                    <button class="nav-item" data-target="auditoria"><i class="ph ph-shield-check"></i> Auditoria de IA</button>
+                    <button class="nav-item" data-target="relatorios"><i class="ph ph-file-pdf"></i> Central de Relatórios</button>
+
+                    <div class="nav-category">Colaboração & Suporte</div>
+                    <button class="nav-item" data-target="comunicacao"><i class="ph ph-chats-circle"></i> Comunicação Interna</button>
+                    <button class="nav-item" data-target="squad"><i class="ph ph-users-three"></i> Meu Squad</button>
+                    <button class="nav-item" data-target="helpdesk"><i class="ph ph-lifebuoy"></i> Helpdesk (Suporte)</button>
+                </nav>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <header class="topbar">
+                    <button class="icon-btn menu-toggle" style="display: none" onclick="document.getElementById('sidebar').classList.add('active')"><i class="ph ph-list"></i></button>
+
+                    <div class="live-badge d-none d-md-flex">
+                        <div class="live-dot"></div>
+                        Servidores Governamentais Online
+                    </div>
+
+                    <div class="topbar-right">
+                        <button class="icon-btn" id="themeToggle" title="Alternar Tema"><i class="ph ph-moon"></i></button>
+                        <button class="icon-btn" onclick="showToast('Sistema a funcionar normalmente.', 'success')"><i class="ph ph-bell"></i></button>
+
+                        <a href="profile.html?persona=b2g" class="user-profile">
+                            <div class="avatar" id="avatar-b2g">MA</div>
+                            <div class="user-info">
+                                <h4 id="dashboard-user-name">Ministério do Ambiente</h4>
+                                <p>Acesso Nível 1</p>
+                            </div>
+                        </a>
+                    </div>
+                </header>
+
+                <!-- ==========================================
+                 VIEW 1: PAINEL EXECUTIVO
+                 ========================================== -->
+                <div id="view-dashboard" class="view-content active">
+                    <div class="page-header">
+                        <div>
+                            <h1>Painel Executivo Federal</h1>
+                            <p>Visão global do impacto do programa EcoRewards no território nacional.</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn-primary" onclick="document.querySelector('.nav-item[data-target=\'relatorios\']').click()">
+                                <i class="ph ph-download-simple"></i> Gerar Relatório
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid-4">
+                        <div class="kpi-card kpi-success">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Economia em Aterros</span>
+                                <div class="kpi-icon" style="color: var(--status-success); background: rgba(16, 185, 129, 0.1)"><i class="ph-fill ph-piggy-bank"></i></div>
+                            </div>
+                            <div class="kpi-value">R$ 45.8M</div>
+                            <div class="kpi-trend trend-up"><i class="ph-bold ph-trend-up"></i> +18.4% vs Mês Ant.</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Volume Nacional</span>
+                                <div class="kpi-icon"><i class="ph-fill ph-recycle"></i></div>
+                            </div>
+                            <div class="kpi-value">125.4k t</div>
+                            <div class="kpi-trend trend-up"><i class="ph-bold ph-trend-up"></i> +12.2% vs Mês Ant.</div>
+                        </div>
+                        <div class="kpi-card kpi-warning">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Custo de Subsídios</span>
+                                <div class="kpi-icon" style="color: var(--status-warning); background: rgba(245, 158, 11, 0.1)"><i class="ph-fill ph-ticket"></i></div>
+                            </div>
+                            <div class="kpi-value">R$ 12.1M</div>
+                            <div class="kpi-trend trend-neutral"><i class="ph-bold ph-minus"></i> Orçamento Controlado</div>
+                        </div>
+                        <div class="kpi-card kpi-accent">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Cidadãos Ativos</span>
+                                <div class="kpi-icon" style="color: var(--brand-accent); background: rgba(16, 185, 129, 0.1)"><i class="ph-fill ph-users"></i></div>
+                            </div>
+                            <div class="kpi-value">3.25M</div>
+                            <div class="kpi-trend trend-up"><i class="ph-bold ph-trend-up"></i> +5.4% de adoção</div>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-chart-line-up"></i> Adoção Nacional (6 Meses)</div>
+                            </div>
+                            <div class="chart-area">
+                                <div class="chart-col">
+                                    <div class="chart-bar anim-h" data-h="30%"></div>
+                                    <span class="chart-label">Out</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar anim-h" data-h="45%"></div>
+                                    <span class="chart-label">Nov</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar anim-h" data-h="40%"></div>
+                                    <span class="chart-label">Dez</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar anim-h" data-h="65%"></div>
+                                    <span class="chart-label">Jan</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar anim-h" data-h="80%"></div>
+                                    <span class="chart-label">Fev</span>
+                                </div>
+                                <div class="chart-col">
+                                    <div class="chart-bar anim-h" data-h="100%"></div>
+                                    <span class="chart-label">Mar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-lightning"></i> Status Operacional</div>
+                            </div>
+                            <div class="h-bar-item">
+                                <div class="h-bar-info"><span>Ecopontos Online</span><span>92%</span></div>
+                                <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="92%" style="background-color: var(--status-success)"></div></div>
+                            </div>
+                            <div class="h-bar-item" style="margin-top: 1.5rem">
+                                <div class="h-bar-info"><span>Precisão da IA</span><span>99.4%</span></div>
+                                <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="99.4%" style="background-color: var(--brand-primary)"></div></div>
+                            </div>
+                            <div class="h-bar-item" style="margin-top: 1.5rem">
+                                <div class="h-bar-info"><span>Execução do Fundo Verde</span><span>78%</span></div>
+                                <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="78%" style="background-color: var(--status-warning)"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 2: INTELIGÊNCIA REGIONAL
+                 ========================================== -->
+                <div id="view-regional" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Inteligência Regional</h1>
+                            <p>Distribuição demográfica e adoção do programa por regiões do país.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-4" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))">
+                        <div class="kpi-card" style="border-top-color: #dc2626">
+                            <div class="kpi-header"><span class="kpi-title">Sudeste</span></div>
+                            <div class="kpi-value" style="font-size: 1.5rem">1.46M</div>
+                            <div class="kpi-trend trend-up">+5.2%</div>
+                        </div>
+                        <div class="kpi-card" style="border-top-color: #f59e0b">
+                            <div class="kpi-header"><span class="kpi-title">Nordeste</span></div>
+                            <div class="kpi-value" style="font-size: 1.5rem">585k</div>
+                            <div class="kpi-trend trend-up">+8.1%</div>
+                        </div>
+                        <div class="kpi-card" style="border-top-color: #3b82f6">
+                            <div class="kpi-header"><span class="kpi-title">Sul</span></div>
+                            <div class="kpi-value" style="font-size: 1.5rem">552k</div>
+                            <div class="kpi-trend trend-up">+2.4%</div>
+                        </div>
+                        <div class="kpi-card" style="border-top-color: #7c3aed">
+                            <div class="kpi-header"><span class="kpi-title">C. Oeste</span></div>
+                            <div class="kpi-value" style="font-size: 1.5rem">390k</div>
+                            <div class="kpi-trend trend-up">+4.7%</div>
+                        </div>
+                        <div class="kpi-card" style="border-top-color: #10b981">
+                            <div class="kpi-header"><span class="kpi-title">Norte</span></div>
+                            <div class="kpi-value" style="font-size: 1.5rem">260k</div>
+                            <div class="kpi-trend trend-up">+1.2%</div>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-chart-bar"></i> Top 5 Estados (Volume)</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 1.25rem">
+                                <div class="h-bar-item">
+                                    <div class="h-bar-info"><span>São Paulo (SP)</span><span class="t-num">1.1M</span></div>
+                                    <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="85%" style="background: #dc2626"></div></div>
+                                </div>
+                                <div class="h-bar-item">
+                                    <div class="h-bar-info"><span>Rio de Janeiro (RJ)</span><span class="t-num">360k</span></div>
+                                    <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="45%" style="background: #dc2626"></div></div>
+                                </div>
+                                <div class="h-bar-item">
+                                    <div class="h-bar-info"><span>Bahia (BA)</span><span class="t-num">210k</span></div>
+                                    <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="30%" style="background: #f59e0b"></div></div>
+                                </div>
+                                <div class="h-bar-item">
+                                    <div class="h-bar-info"><span>Minas Gerais (MG)</span><span class="t-num">195k</span></div>
+                                    <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="25%" style="background: #dc2626"></div></div>
+                                </div>
+                                <div class="h-bar-item">
+                                    <div class="h-bar-info"><span>Paraná (PR)</span><span class="t-num">180k</span></div>
+                                    <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="20%" style="background: #3b82f6"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-chart-pie-slice"></i> Market Share</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 1rem">
+                                <div style="display: flex; justify-content: space-between; align-items: center">
+                                    <span><span style="display: inline-block; width: 12px; height: 12px; background: #dc2626; border-radius: 2px; margin-right: 8px"></span>Sudeste</span
+                                    ><span style="font-weight: 700">45%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center">
+                                    <span><span style="display: inline-block; width: 12px; height: 12px; background: #f59e0b; border-radius: 2px; margin-right: 8px"></span>Nordeste</span
+                                    ><span style="font-weight: 700">18%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center">
+                                    <span><span style="display: inline-block; width: 12px; height: 12px; background: #3b82f6; border-radius: 2px; margin-right: 8px"></span>Sul</span
+                                    ><span style="font-weight: 700">17%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center">
+                                    <span><span style="display: inline-block; width: 12px; height: 12px; background: #7c3aed; border-radius: 2px; margin-right: 8px"></span>C. Oeste</span
+                                    ><span style="font-weight: 700">12%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center">
+                                    <span><span style="display: inline-block; width: 12px; height: 12px; background: #10b981; border-radius: 2px; margin-right: 8px"></span>Norte</span
+                                    ><span style="font-weight: 700">8%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 3: GESTÃO DE ECOPONTOS
+                 ========================================== -->
+                <div id="view-ecopontos" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Gestão de Ecopontos</h1>
+                            <p>Monitorização em tempo real do parque de máquinas instalado.</p>
+                        </div>
+                        <button class="btn-primary" onclick="showToast('Abrindo formulário de registo...', 'info')"><i class="ph ph-plus"></i> Registar Nova Máquina</button>
+                    </div>
+
+                    <div class="grid-3">
+                        <div class="kpi-card kpi-success">
+                            <div class="kpi-title">Operacionais</div>
+                            <div class="kpi-value" style="color: var(--status-success)">3.450</div>
+                            <div class="kpi-trend">Perfeito estado</div>
+                        </div>
+                        <div class="kpi-card kpi-warning">
+                            <div class="kpi-title">A Precisar de Recolha</div>
+                            <div class="kpi-value" style="color: var(--status-warning)">142</div>
+                            <div class="kpi-trend">Capacidade > 85%</div>
+                        </div>
+                        <div class="kpi-card kpi-danger">
+                            <div class="kpi-title">Em Manutenção / Offline</div>
+                            <div class="kpi-value" style="color: var(--status-danger)">28</div>
+                            <div class="kpi-trend">Técnicos acionados</div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title"><i class="ph-fill ph-warning-circle" style="color: var(--status-warning)"></i> Máquinas a exigir atenção</div>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID Máquina</th>
+                                        <th>Localização</th>
+                                        <th>Status</th>
+                                        <th>Capacidade</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>#ECO-LX-044</strong></td>
+                                        <td>Praça do Comércio, Lisboa</td>
+                                        <td><span class="badge badge-warning">Atingir Limite</span></td>
+                                        <td>
+                                            <div class="h-bar-track" style="width: 100px; display: inline-block; vertical-align: middle; margin-right: 8px">
+                                                <div class="h-bar-fill anim-w" data-w="88%" style="background: var(--status-warning)"></div>
+                                            </div>
+                                            88%
+                                        </td>
+                                        <td>
+                                            <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.75rem" onclick="showToast('Camião agendado com sucesso!', 'success')">
+                                                Chamar Camião
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#ECO-SP-102</strong></td>
+                                        <td>Av. Paulista, São Paulo</td>
+                                        <td><span class="badge badge-danger">Offline (Rede)</span></td>
+                                        <td>
+                                            <div class="h-bar-track" style="width: 100px; display: inline-block; vertical-align: middle; margin-right: 8px">
+                                                <div class="h-bar-fill anim-w" data-w="45%" style="background: var(--text-secondary)"></div>
+                                            </div>
+                                            45%
+                                        </td>
+                                        <td>
+                                            <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.75rem" onclick="showToast('Comando de restart enviado.', 'info')">
+                                                Reiniciar Remote
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 4: BALANÇO FINANCEIRO
+                 ========================================== -->
+                <div id="view-financeiro" class="view-content">
+                    <div class="page-header">
+                        <h1>Balanço & Orçamento</h1>
+                        <p>Controlo orçamental, repasses de subsídios e retorno sobre investimento (ROI).</p>
+                    </div>
+
+                    <div class="grid-4">
+                        <div class="kpi-card">
+                            <div class="kpi-title">Orçamento Total</div>
+                            <div class="kpi-value" style="color: var(--brand-primary)">R$ 15.2M</div>
+                            <div class="kpi-trend">Em Caixa</div>
+                        </div>
+                        <div class="kpi-card kpi-success">
+                            <div class="kpi-title">Receita (Aterros)</div>
+                            <div class="kpi-value" style="color: var(--status-success)">+R$ 45.8M</div>
+                            <div class="kpi-trend trend-up">Poupança</div>
+                        </div>
+                        <div class="kpi-card kpi-danger">
+                            <div class="kpi-title">Custo Subsídios</div>
+                            <div class="kpi-value" style="color: var(--status-danger)">-R$ 12.1M</div>
+                            <div class="kpi-trend trend-down">Recompensas</div>
+                        </div>
+                        <div class="kpi-card kpi-accent">
+                            <div class="kpi-title">ROI do Projeto</div>
+                            <div class="kpi-value" style="color: var(--brand-accent)">378%</div>
+                            <div class="kpi-trend trend-up">Positivo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 5: AUDITORIA DE IA E FRAUDE
+                 ========================================== -->
+                <div id="view-auditoria" class="view-content">
+                    <div class="page-header">
+                        <h1>Auditoria de IA & Fraude</h1>
+                        <p>Acompanhamento da precisão do nosso algoritmo de visão computacional na identificação de resíduos.</p>
+                    </div>
+                    <div class="grid-2">
+                        <div class="panel" style="display: flex; align-items: center; gap: 2rem">
+                            <div
+                                style="
+                                    width: 100px;
+                                    height: 100px;
+                                    border-radius: 50%;
+                                    border: 10px solid var(--status-success);
+                                    border-top-color: var(--bg-secondary);
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-weight: 800;
+                                    font-size: 1.5rem;
+                                    color: var(--text-primary);
+                                "
+                            >
+                                99%
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem">Precisão do Algoritmo</h3>
+                                <p style="color: var(--text-secondary)">Taxa de sucesso na identificação de materiais na última semana. Modelo saudável.</p>
+                            </div>
+                        </div>
+                        <div class="panel" style="display: flex; align-items: center; gap: 2rem">
+                            <div
+                                style="
+                                    width: 100px;
+                                    height: 100px;
+                                    border-radius: 50%;
+                                    border: 10px solid var(--status-danger);
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-weight: 800;
+                                    font-size: 1.5rem;
+                                    color: var(--status-danger);
+                                "
+                            >
+                                142
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem">Fraudes Bloqueadas</h3>
+                                <p style="color: var(--text-secondary)">Tentativas de submissão de imagens falsas detetadas nas últimas 24h.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 6: CENTRAL DE RELATÓRIOS
+                 ========================================== -->
+                <div id="view-relatorios" class="view-content">
+                    <div class="page-header">
+                        <h1>Central de Relatórios</h1>
+                        <p>Gere e exporte os dados oficiais do programa para efeitos de transparência pública.</p>
+                    </div>
+                    <div class="grid-3">
+                        <div class="panel" style="text-align: center; padding: 3rem 1.5rem">
+                            <i class="ph-fill ph-file-pdf" style="font-size: 4rem; color: #ef4444; margin-bottom: 1rem"></i>
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem">Relatório DRE Mensal</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">
+                                Demonstrativo financeiro de todos os subsídios pagos e receitas geradas (Aterros).
+                            </p>
+                            <button class="btn-outline" style="width: 100%; justify-content: center" onclick="showToast('O download do PDF será iniciado.', 'info')">Baixar PDF</button>
+                        </div>
+                        <div class="panel" style="text-align: center; padding: 3rem 1.5rem">
+                            <i class="ph-fill ph-file-xls" style="font-size: 4rem; color: #10b981; margin-bottom: 1rem"></i>
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem">Base de Dados (Raw)</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">Lista completa em Excel do funcionamento dos ecopontos e adoção regional.</p>
+                            <button class="btn-outline" style="width: 100%; justify-content: center" onclick="showToast('Gerando ficheiro Excel (.xlsx)...', 'info')">
+                                Exportar Planilha
+                            </button>
+                        </div>
+                        <div class="panel" style="text-align: center; padding: 3rem 1.5rem">
+                            <i class="ph-fill ph-shield-check" style="font-size: 4rem; color: var(--brand-primary); margin-bottom: 1rem"></i>
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem">Compliance (Auditoria IA)</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">
+                                Documento técnico comprovando a eficácia e prevenção de fraudes do sistema.
+                            </p>
+                            <button class="btn-outline" style="width: 100%; justify-content: center" onclick="showToast('O download do PDF seguro foi iniciado.', 'info')">
+                                Baixar Auditoria
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 7: COMUNICAÇÃO INTERNA (NOVO)
+                 ========================================== -->
+                <div id="view-comunicacao" class="view-content">
+                    <div class="page-header">
+                        <h1>Comunicação Interna</h1>
+                        <p>Canais oficiais de comunicação entre os diversos departamentos governamentais e técnicos.</p>
+                    </div>
+
+                    <div class="chat-container">
+                        <div class="chat-sidebar">
+                            <div class="chat-header">Canais Abertos</div>
+                            <div class="chat-channels">
+                                <div class="channel-item active">
+                                    <div class="channel-icon"><i class="ph-fill ph-users"></i></div>
+                                    <div class="channel-info">
+                                        <h4>Geral (Nacional)</h4>
+                                        <p>Anúncios do projeto e metas globais</p>
+                                    </div>
+                                </div>
+                                <div class="channel-item">
+                                    <div class="channel-icon"><i class="ph-fill ph-wrench"></i></div>
+                                    <div class="channel-info">
+                                        <h4>Equipa de Manutenção</h4>
+                                        <p>Avarias de máquinas e logística</p>
+                                    </div>
+                                </div>
+                                <div class="channel-item">
+                                    <div class="channel-icon"><i class="ph-fill ph-code"></i></div>
+                                    <div class="channel-info">
+                                        <h4>TI & Desenvolvimento</h4>
+                                        <p>Atualizações do Algoritmo IA</p>
+                                    </div>
+                                </div>
+                                <div class="channel-item" style="border-top: 1px solid var(--border-color); margin-top: 1rem">
+                                    <div class="channel-icon" style="background: transparent; color: var(--text-secondary)"><i class="ph ph-plus"></i></div>
+                                    <div class="channel-info"><h4>Criar Novo Canal</h4></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-main">
+                            <div class="chat-header" style="background: var(--card-bg)"># Geral (Nacional)</div>
+                            <div class="chat-messages" id="chat-box">
+                                <div class="message">
+                                    <div class="msg-avatar">AD</div>
+                                    <div>
+                                        <div class="msg-info"><span>Admin. Central</span><span>09:15</span></div>
+                                        <div class="msg-bubble">Bom dia a todos! O relatório mensal já está disponível na Central de Relatórios. Tivemos uma poupança recorde!</div>
+                                    </div>
+                                </div>
+                                <div class="message">
+                                    <div class="msg-avatar" style="background: var(--brand-light); color: var(--brand-primary)">RC</div>
+                                    <div>
+                                        <div class="msg-info"><span>Ricardo (Finanças)</span><span>09:22</span></div>
+                                        <div class="msg-bubble">Excelentes notícias! O orçamento para os subsídios também se manteve dentro dos 80% planeados.</div>
+                                    </div>
+                                </div>
+                                <!-- Minha mensagem simulada -->
+                                <div class="message sent">
+                                    <div class="msg-avatar" style="background: var(--brand-primary); color: white">VO</div>
+                                    <div>
+                                        <div class="msg-info"><span>Você</span><span>10:45</span></div>
+                                        <div class="msg-bubble">Fantástico trabalho equipa. Vamos apontar para os 95% de máquinas online até sexta.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <input type="text" id="chat-input" placeholder="Escreva a sua mensagem para #Geral..." />
+                                <button onclick="sendChatMessage()"><i class="ph-bold ph-paper-plane-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 8: MEU SQUAD (NOVO)
+                 ========================================== -->
+                <div id="view-squad" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>O Meu Squad</h1>
+                            <p>Gestão dos colaboradores e técnicos associados ao seu departamento.</p>
+                        </div>
+                        <button class="btn-primary" onclick="showToast('A abrir convite por e-mail...', 'info')"><i class="ph ph-user-plus"></i> Convidar Membro</button>
+                    </div>
+
+                    <div class="grid-4">
+                        <!-- Membro 1 -->
+                        <div class="team-card">
+                            <div class="team-status status-online"></div>
+                            <div class="team-avatar">RS</div>
+                            <h3>Roberto Silva</h3>
+                            <p class="role">Diretor Operacional</p>
+                            <p class="email">roberto@gov.br</p>
+                            <div class="team-actions">
+                                <button title="Enviar Mensagem" onclick="showToast('A abrir chat direto...', 'info')"><i class="ph ph-chat-circle"></i></button>
+                                <button title="Ver Perfil" onclick="showToast('Acesso restrito.', 'error')"><i class="ph ph-user"></i></button>
+                            </div>
+                        </div>
+                        <!-- Membro 2 -->
+                        <div class="team-card">
+                            <div class="team-status status-online"></div>
+                            <div class="team-avatar" style="background: #fef3c7; color: #d97706">AM</div>
+                            <h3>Ana Marques</h3>
+                            <p class="role">Analista de Dados</p>
+                            <p class="email">ana.m@gov.br</p>
+                            <div class="team-actions">
+                                <button title="Enviar Mensagem" onclick="showToast('A abrir chat direto...', 'info')"><i class="ph ph-chat-circle"></i></button>
+                                <button title="Ver Perfil" onclick="showToast('Acesso restrito.', 'error')"><i class="ph ph-user"></i></button>
+                            </div>
+                        </div>
+                        <!-- Membro 3 -->
+                        <div class="team-card">
+                            <div class="team-status status-offline"></div>
+                            <div class="team-avatar" style="background: #f1f5f9; color: #64748b">FC</div>
+                            <h3>Fernando Costa</h3>
+                            <p class="role">Técnico Hardware</p>
+                            <p class="email">fernando.c@gov.br</p>
+                            <div class="team-actions">
+                                <button title="Enviar Mensagem" onclick="showToast('Utilizador Offline. Mensagem guardada.', 'warning')"><i class="ph ph-chat-circle"></i></button>
+                                <button title="Ver Perfil" onclick="showToast('Acesso restrito.', 'error')"><i class="ph ph-user"></i></button>
+                            </div>
+                        </div>
+                        <!-- Membro 4 (Adicionar) -->
+                        <div
+                            class="team-card"
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                border: 2px dashed var(--border-color);
+                                background: transparent;
+                                cursor: pointer;
+                            "
+                            onclick="showToast('A abrir configurações da equipa...', 'info')"
+                        >
+                            <i class="ph ph-plus" style="font-size: 3rem; color: var(--text-secondary); margin-bottom: 1rem"></i>
+                            <h3 style="color: var(--text-secondary)">Adicionar ao Squad</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 9: HELPDESK (NOVO)
+                 ========================================== -->
+                <div id="view-helpdesk" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Helpdesk (Suporte Técnico)</h1>
+                            <p>Sistema de tickets para reportar falhas no software, hardware ou faturas.</p>
+                        </div>
+                        <button class="btn-primary" onclick="showToast('Formulário de novo Ticket aberto.', 'info')"><i class="ph ph-ticket"></i> Abrir Novo Chamado</button>
+                    </div>
+
+                    <div class="grid-3" style="margin-bottom: 2rem">
+                        <div class="panel" style="padding: 1rem; text-align: center; border-color: var(--status-danger); background: rgba(239, 68, 68, 0.02)">
+                            <h4 style="color: var(--status-danger); font-weight: 800; font-size: 1.5rem">3</h4>
+                            <p style="font-size: 0.8rem; font-weight: 600">Tickets Abertos</p>
+                        </div>
+                        <div class="panel" style="padding: 1rem; text-align: center; border-color: var(--status-warning); background: rgba(245, 158, 11, 0.02)">
+                            <h4 style="color: var(--status-warning); font-weight: 800; font-size: 1.5rem">5</h4>
+                            <p style="font-size: 0.8rem; font-weight: 600">Em Andamento</p>
+                        </div>
+                        <div class="panel" style="padding: 1rem; text-align: center; border-color: var(--status-success); background: rgba(16, 185, 129, 0.02)">
+                            <h4 style="color: var(--status-success); font-weight: 800; font-size: 1.5rem">124</h4>
+                            <p style="font-size: 0.8rem; font-weight: 600">Resolvidos (Mês)</p>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Assunto</th>
+                                        <th>Prioridade</th>
+                                        <th>Status</th>
+                                        <th>Última Atualização</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 700; color: var(--text-secondary)">#TK-8091</td>
+                                        <td style="font-weight: 600">Ecoponto #ECO-SP-102 sem comunicação de rede</td>
+                                        <td><span class="badge badge-danger">Alta</span></td>
+                                        <td><span class="badge badge-warning">Em Andamento</span></td>
+                                        <td>Há 2 horas</td>
+                                        <td>
+                                            <button
+                                                class="btn-outline"
+                                                style="padding: 0.25rem 0.5rem; font-size: 0.75rem"
+                                                onclick="showToast('A abrir detalhes do ticket #TK-8091...', 'info')"
+                                            >
+                                                Ver
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700; color: var(--text-secondary)">#TK-8088</td>
+                                        <td style="font-weight: 600">Falha na exportação do DRE formato PDF</td>
+                                        <td><span class="badge badge-warning">Média</span></td>
+                                        <td>
+                                            <span class="badge badge-danger" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2)"
+                                                >Aberto</span
+                                            >
+                                        </td>
+                                        <td>Ontem</td>
+                                        <td>
+                                            <button
+                                                class="btn-outline"
+                                                style="padding: 0.25rem 0.5rem; font-size: 0.75rem"
+                                                onclick="showToast('A abrir detalhes do ticket #TK-8088...', 'info')"
+                                            >
+                                                Ver
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700; color: var(--text-secondary)">#TK-8012</td>
+                                        <td style="font-weight: 600">Pedido de acesso Nível 2 para novo Analista</td>
+                                        <td><span class="badge badge-info">Baixa</span></td>
+                                        <td><span class="badge badge-success">Resolvido</span></td>
+                                        <td>12 Março</td>
+                                        <td><button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; opacity: 0.5">Fechado</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Container para Toasts -->
+        <div id="toast-container"></div>
+
+        <!-- Scripts -->
+        
+        <script src="../js/b2g-dashboard.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Acesso</title>
+        <!-- Importando fonte inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <!-- Ícones do Phosphor (Leves e modernos) -->
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/login.css" />
+
+    </head>
+    <body>
+        <main class="split-layout">
+            <!-- LADO ESQUERDO: Visual (Oculto no Mobile) -->
+            <section class="visual-side">
+                <div class="visual-3d-container">
+                    <i class="ph-fill ph-leaf" style="font-size: 8rem; color: white"></i>
+                </div>
+
+                <div class="visual-text">
+                    <h2>O futuro é verde.</h2>
+                    <p>Transforme as suas ações sustentáveis em recompensas reais. Faça parte do ecossistema que valoriza quem cuida do nosso planeta.</p>
+                </div>
+            </section>
+
+            <!-- LADO DIREITO: Formulário de Login -->
+            <section class="form-side">
+                <!-- NOVO: Link para voltar à Home -->
+                <a href="home.html" class="back-home-link" aria-label="Voltar para a Home"> <i class="ph-fill ph-leaf"></i> Voltar à Home </a>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar Tema Escuro">
+                    <i class="ph ph-moon"></i>
+                </button>
+
+                <div class="form-container">
+                    <header class="form-header" id="main-header">
+                        <!-- O Logótipo também redireciona para a Home agora -->
+                        <a href="home.html" class="logo">
+                            <i class="ph-fill ph-plant"></i>
+                            EcoRewards
+                        </a>
+                        <p>Bem-vindo de volta! Por favor, insira os seus dados.</p>
+                    </header>
+
+                    <div class="tabs" id="main-tabs">
+                        <button class="tab-btn active" data-tab="cidadao"><i class="ph ph-user"></i> Cidadão</button>
+                        <button class="tab-btn" data-tab="empresa"><i class="ph ph-buildings"></i> Empresa</button>
+                        <button class="tab-btn" data-tab="governo"><i class="ph ph-bank"></i> Governo</button>
+                    </div>
+
+                    <!-- 1. Aba Cidadão (B2C) -->
+                    <div id="tab-cidadao" class="tab-content active">
+                        <div id="view-login-cidadao">
+                            <form id="form-login-b2c">
+                                <div class="input-group">
+                                    <label for="email-cidadao">E-mail</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-envelope-simple"></i>
+                                        <input type="email" id="email-cidadao" placeholder="seu@email.com" required />
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="senha-cidadao">Palavra-passe</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-lock-key"></i>
+                                        <input type="password" id="senha-cidadao" placeholder="••••••••" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-options">
+                                    <label class="checkbox-group">
+                                        <input type="checkbox" />
+                                        <span>Lembrar os meus dados</span>
+                                    </label>
+                                    <a id="link-esqueci" class="forgot-link">Esqueci-me da palavra-passe</a>
+                                </div>
+
+                                <button type="submit" class="btn-submit">Entrar na minha conta <i class="ph ph-arrow-right"></i></button>
+
+                                <div style="text-align: center; margin-top: 1.5rem">
+                                    <span style="color: var(--text-secondary); font-size: 0.875rem"> Ainda não tem conta? <a id="link-registrar" class="forgot-link">Registe-se</a> </span>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="view-register-cidadao" style="display: none">
+                            <div class="sub-view-header">
+                                <h3>Criar Conta Cidadão</h3>
+                                <p>Comece a ganhar recompensas por reciclar hoje mesmo.</p>
+                            </div>
+                            <form id="form-register-b2c">
+                                <div class="input-group">
+                                    <label for="nome-registo">Nome Completo</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-user"></i>
+                                        <input type="text" id="nome-registo" placeholder="João da Silva" required />
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="email-registo">E-mail</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-envelope-simple"></i>
+                                        <input type="email" id="email-registo" placeholder="seu@email.com" required />
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="senha-registo">Criar Palavra-passe</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-lock-key"></i>
+                                        <input type="password" id="senha-registo" placeholder="Mínimo 8 caracteres" required />
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-submit">Concluir Registo <i class="ph ph-check-circle"></i></button>
+
+                                <div style="text-align: center; margin-top: 1rem">
+                                    <a class="forgot-link link-voltar-login"> <i class="ph ph-arrow-left"></i> Voltar para o Login </a>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="view-forgot-cidadao" style="display: none">
+                            <div class="sub-view-header">
+                                <h3>Recuperar Palavra-passe</h3>
+                                <p>Insira o seu e-mail e enviaremos um link de recuperação.</p>
+                            </div>
+                            <form id="form-forgot-b2c">
+                                <div class="input-group">
+                                    <label for="email-recuperacao">E-mail Registado</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-envelope-simple"></i>
+                                        <input type="email" id="email-recuperacao" placeholder="seu@email.com" required />
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-submit">Enviar Link <i class="ph ph-paper-plane-right"></i></button>
+
+                                <div style="text-align: center; margin-top: 1rem">
+                                    <a class="forgot-link link-voltar-login"> <i class="ph ph-arrow-left"></i> Voltar para o Login </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- 2. Aba Empresa (B2B) -->
+                    <div id="tab-empresa" class="tab-content">
+                        <form id="form-login-b2b">
+                            <div class="input-group">
+                                <label for="email-corp">E-mail Corporativo</label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-briefcase"></i>
+                                    <input type="email" id="email-corp" placeholder="colaborador@empresa.com" required />
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="senha-empresa">Palavra-passe de Acesso</label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-lock-key"></i>
+                                    <input type="password" id="senha-empresa" placeholder="••••••••" required />
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit">Aceder ao Portal ESG <i class="ph ph-arrow-right"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- 3. Aba Governo (B2G) -->
+                    <div id="tab-governo" class="tab-content">
+                        <form id="form-login-b2g">
+                            <div class="input-group">
+                                <label for="email-gov">E-mail Institucional</label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-identification-card"></i>
+                                    <input type="email" id="email-gov" placeholder="gestor@prefeitura.gov.br" required />
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="senha-gov">Palavra-passe do Sistema</label>
+                                <div class="input-wrapper">
+                                    <i class="ph ph-lock-key"></i>
+                                    <input type="password" id="senha-gov" placeholder="••••••••" required />
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit" style="background-color: #0369a1">Entrar no Painel de Controlo <i class="ph ph-arrow-right"></i></button>
+
+                            <div class="divider">OU</div>
+
+                            <button type="button" class="btn-outline" onclick="showToast('A redirecionar para o Single Sign-On (SSO)...', 'info')">
+                                <i class="ph ph-shield-check" style="color: #0369a1"></i>
+                                Iniciar sessão com SSO Governamental
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Container para Toasts Customizados -->
+        <div id="toast-container"></div>
+
+        <!-- Script Lógica de Interface -->
+        
+        <script src="../js/login.js"></script>
+
+    </body>
+</html>

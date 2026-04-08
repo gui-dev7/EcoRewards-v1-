@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | O Meu Painel Verde</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/b2c-dashboard.css" />
+
+    </head>
+    <body>
+        <div class="dashboard-container">
+            <!-- SIDEBAR -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo"><i class="ph-fill ph-plant"></i> EcoRewards</div>
+                    <button class="icon-btn d-md-none menu-toggle" style="display: none" onclick="document.getElementById('sidebar').classList.remove('active')">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+
+                <div class="points-box">
+                    <p>O Seu Saldo</p>
+                    <h3 id="sidebar-balance"><i class="ph-fill ph-coin"></i> 4.250</h3>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-category">Principal</div>
+                    <button class="nav-item active" data-target="dashboard"><i class="ph ph-squares-four"></i> Visão Geral</button>
+                    <button class="nav-item" data-target="scanner"><i class="ph ph-qr-code"></i> Ler Código QR</button>
+                    <button class="nav-item" data-target="recompensas"><i class="ph ph-gift"></i> Catálogo de Prémios</button>
+
+                    <div class="nav-category">Gamificação & Social</div>
+                    <button class="nav-item" data-target="medalhas"><i class="ph ph-medal"></i> Medalhas & Ranking</button>
+                    <button class="nav-item" data-target="desafios"><i class="ph ph-flag-checkered"></i> Desafios Sazonais</button>
+                    <button class="nav-item" data-target="comunidade"><i class="ph ph-users"></i> Comunidade</button>
+
+                    <div class="nav-category">Dados & Info</div>
+                    <button class="nav-item" data-target="impacto"><i class="ph ph-chart-line-up"></i> O Meu Impacto</button>
+                    <button class="nav-item" data-target="historico"><i class="ph ph-clock-counter-clockwise"></i> O Meu Histórico</button>
+                    <button class="nav-item" data-target="guia"><i class="ph ph-book-open"></i> Guia Ecológico</button>
+                    <button class="nav-item" data-target="parceiros"><i class="ph ph-handshake"></i> Nossos Parceiros</button>
+                </nav>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <header class="topbar">
+                    <button class="icon-btn menu-toggle" style="display: none" onclick="document.getElementById('sidebar').classList.add('active')"><i class="ph ph-list"></i></button>
+
+                    <div class="topbar-right">
+                        <button class="icon-btn" id="themeToggle" title="Alternar Tema"><i class="ph ph-moon"></i></button>
+                        <button class="icon-btn" onclick="showToast('As suas medalhas foram atualizadas!', 'success')"><i class="ph ph-bell"></i></button>
+
+                        <a href="profile.html?persona=b2c" class="user-profile">
+                            <div class="avatar" id="avatar-b2c">J</div>
+                            <div class="user-info">
+                                <h4 id="dashboard-user-name">João Silva</h4>
+                                <p>Cidadão Ouro</p>
+                            </div>
+                        </a>
+                    </div>
+                </header>
+
+                <!-- ==========================================
+                 VIEW 1: DASHBOARD
+                 ========================================== -->
+                <div id="view-dashboard" class="view-content active">
+                    <div class="page-header">
+                        <h1>Olá, <span id="header-user-name" style="color: var(--brand-primary)">João</span>! 👋</h1>
+                        <p>O seu impacto positivo na cidade está a crescer.</p>
+                    </div>
+
+                    <!-- Progresso e Nível -->
+                    <div class="level-progress-container" style="cursor: pointer" onclick="document.querySelector('.nav-item[data-target=\'medalhas\']').click()">
+                        <div class="level-header">
+                            <span><i class="ph-fill ph-medal" style="color: #fbbf24"></i> Nível Atual: Ouro (Top 15% da sua cidade)</span>
+                            <span style="color: var(--text-secondary)">Próximo Nível: Platina (5.000 pts)</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem; text-align: right">Faltam apenas 750 EcoPontos! Clique para ver o Ranking.</p>
+                    </div>
+
+                    <!-- Impacto Stats -->
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <div class="impact-icon"><i class="ph ph-recycle"></i></div>
+                            <div class="impact-info">
+                                <h4>45 kg</h4>
+                                <p>Lixo Reciclado</p>
+                            </div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-icon"><i class="ph ph-tree"></i></div>
+                            <div class="impact-info">
+                                <h4>12.5 kg</h4>
+                                <p>CO₂ Poupado</p>
+                            </div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-icon"><i class="ph ph-ticket"></i></div>
+                            <div class="impact-info">
+                                <h4>8</h4>
+                                <p>Prémios Trocados</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="data-row">
+                        <!-- Missões Diárias (Gamificação) -->
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-target"></i> Missões Diárias</div>
+                                <button class="btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.75rem">Atualizar</button>
+                            </div>
+                            <div class="mission-item">
+                                <div class="mission-info">
+                                    <h5>Reciclador Matinal</h5>
+                                    <p>Faça uma leitura de QR code antes das 10h da manhã.</p>
+                                </div>
+                                <div class="mission-reward">+50 <i class="ph-fill ph-coin"></i></div>
+                            </div>
+                            <div class="mission-item">
+                                <div class="mission-info">
+                                    <h5>Herói do Vidro</h5>
+                                    <p>Deposite 3 garrafas de vidro num ecoponto verde.</p>
+                                </div>
+                                <div class="mission-reward">+120 <i class="ph-fill ph-coin"></i></div>
+                            </div>
+                            <div class="mission-item" style="opacity: 0.6">
+                                <div class="mission-info">
+                                    <h5 style="text-decoration: line-through">Partilhe nas Redes</h5>
+                                    <p style="color: var(--brand-hover)">Missão Concluída! <i class="ph-fill ph-check-circle"></i></p>
+                                </div>
+                                <div class="mission-reward" style="background: transparent; color: var(--text-secondary)">+30 <i class="ph-fill ph-coin"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Ação Rápida / Mapa Simulado -->
+                        <div
+                            class="panel"
+                            style="
+                                background: linear-gradient(135deg, var(--bg-primary), var(--brand-light));
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                text-align: center;
+                            "
+                        >
+                            <div
+                                style="
+                                    width: 64px;
+                                    height: 64px;
+                                    background: var(--brand-primary);
+                                    color: white;
+                                    border-radius: 50%;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-size: 2rem;
+                                    margin-bottom: 1rem;
+                                    box-shadow: 0 10px 15px rgba(16, 185, 129, 0.3);
+                                "
+                            >
+                                <i class="ph ph-map-pin"></i>
+                            </div>
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem">Ecopontos Próximos</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">Existem 3 ecopontos inteligentes num raio de 2km da sua localização.</p>
+                            <a href="ecopontos.html" class="btn-primary" style="width: 100%; justify-content: center">Abrir Mapa de Ecopontos</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 2: SCANNER
+                 ========================================== -->
+                <div id="view-scanner" class="view-content">
+                    <div class="page-header">
+                        <h1>Scanner EcoRewards</h1>
+                        <p>Aponte a câmara para o código QR presente no ecoponto inteligente.</p>
+                    </div>
+
+                    <div class="panel" style="max-width: 600px; margin: 0 auto; text-align: center">
+                        <div class="scanner-container">
+                            <div class="scanner-frame">
+                                <span></span>
+                                <div class="scanner-line"></div>
+                            </div>
+                            <p style="position: absolute; bottom: 20px; color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; font-weight: 500">A aguardar código QR...</p>
+                        </div>
+
+                        <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem">Como validar os seus pontos?</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 2rem">
+                            Assegure-se de que a máquina fechou a tampa corretamente antes de ler o código gerado no ecrã.
+                        </p>
+
+                        <button class="btn-primary" onclick="simulateScan()" style="width: 100%; justify-content: center; padding: 1rem">
+                            <i class="ph ph-camera"></i> Simular Leitura (Protótipo)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 3: RECOMPENSAS (CATÁLOGO GIGANTE)
+                 ========================================== -->
+                <div id="view-recompensas" class="view-content">
+                    <div class="page-header">
+                        <h1>Catálogo de Prémios</h1>
+                        <p>Troque os seus EcoPontos por benefícios. A sua dedicação ao planeta vale muito!</p>
+                    </div>
+
+                    <!-- Filtros do Catálogo -->
+                    <div class="rewards-filters">
+                        <button class="filter-btn active" data-filter="all"><i class="ph-fill ph-squares-four"></i> Todos</button>
+                        <button class="filter-btn" data-filter="transporte"><i class="ph-fill ph-bus"></i> Transporte</button>
+                        <button class="filter-btn" data-filter="alimentacao"><i class="ph-fill ph-hamburger"></i> Alimentação</button>
+                        <button class="filter-btn" data-filter="lazer"><i class="ph-fill ph-popcorn"></i> Lazer</button>
+                        <button class="filter-btn" data-filter="servicos"><i class="ph-fill ph-lightning"></i> Serviços</button>
+                        <button class="filter-btn" data-filter="produtos"><i class="ph-fill ph-tote"></i> Produtos Eco</button>
+                    </div>
+
+                    <div class="rewards-grid" id="catalog-grid">
+                        <!-- TRANSPORTE -->
+                        <div class="reward-card item-transporte">
+                            <div class="r-image bg-transporte"><span class="r-cat-badge">Transporte</span><i class="ph ph-bus"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Passe Livre (1 Viagem)</h3>
+                                <p class="r-desc">Bilhete unitário válido para toda a rede de transportes públicos da sua cidade.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 500</span>
+                                    <button class="btn-outline" onclick="redeemReward('Passe Livre', 500)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-transporte">
+                            <div class="r-image bg-transporte"><span class="r-cat-badge">Transporte</span><i class="ph ph-car"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Voucher 5€ Uber Green</h3>
+                                <p class="r-desc">Desconto direto na sua próxima viagem num veículo 100% elétrico.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 900</span>
+                                    <button class="btn-outline" onclick="redeemReward('Uber Green 5€', 900)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-transporte">
+                            <div class="r-image bg-transporte"><span class="r-cat-badge">Transporte</span><i class="ph ph-scooter"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Aluguer Trotinete (2h)</h3>
+                                <p class="r-desc">Duas horas gratuitas em qualquer trotinete parceira espalhada pela cidade.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 300</span>
+                                    <button class="btn-outline" onclick="redeemReward('Trotinete 2h', 300)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-transporte">
+                            <div class="r-image bg-transporte"><span class="r-cat-badge">Transporte</span><i class="ph ph-train"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Voucher 15€ Comboio Intercidades</h3>
+                                <p class="r-desc">Desconto para viagens de longo curso ecológicas de comboio.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 2.500</span>
+                                    <button class="btn-outline" onclick="redeemReward('Voucher Comboio 15€', 2500)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ALIMENTAÇÃO -->
+                        <div class="reward-card item-alimentacao">
+                            <div class="r-image bg-alimentacao"><span class="r-cat-badge">Alimentação</span><i class="ph ph-shopping-cart"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Voucher 10€ Supermercado</h3>
+                                <p class="r-desc">Cupão de desconto válido em redes de supermercados parceiros.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 1.200</span>
+                                    <button class="btn-outline" onclick="redeemReward('Voucher Supermercado', 1200)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-alimentacao">
+                            <div class="r-image bg-alimentacao"><span class="r-cat-badge">Alimentação</span><i class="ph ph-coffee"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Café Expresso Grátis</h3>
+                                <p class="r-desc">Resgate um café nas pastelarias parceiras ao levar o seu próprio copo.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 150</span>
+                                    <button class="btn-outline" onclick="redeemReward('Café Expresso', 150)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-alimentacao">
+                            <div class="r-image bg-alimentacao"><span class="r-cat-badge">Alimentação</span><i class="ph ph-carrot"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Menu Fast Food Vegano</h3>
+                                <p class="r-desc">Um menu completo à base de plantas num dos nossos restaurantes parceiros.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 800</span>
+                                    <button class="btn-outline" onclick="redeemReward('Menu Vegano', 800)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-alimentacao">
+                            <div class="r-image bg-alimentacao"><span class="r-cat-badge">Alimentação</span><i class="ph ph-basket"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Cabaz de Produtos Biológicos</h3>
+                                <p class="r-desc">Cabaz com frutas e legumes frescos de produtores locais entregue em casa.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 3.000</span>
+                                    <button class="btn-outline" onclick="redeemReward('Cabaz Biológico', 3000)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LAZER -->
+                        <div class="reward-card item-lazer">
+                            <div class="r-image bg-lazer"><span class="r-cat-badge">Lazer</span><i class="ph ph-headphones"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">1 Mês Spotify Premium</h3>
+                                <p class="r-desc">Ouvir música sem anúncios durante 30 dias. Código enviado para o email.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 1.500</span>
+                                    <button class="btn-outline" onclick="redeemReward('Spotify Premium', 1500)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-lazer">
+                            <div class="r-image bg-lazer"><span class="r-cat-badge">Lazer</span><i class="ph ph-film-strip"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Bilhete de Cinema Duplo</h3>
+                                <p class="r-desc">Dois bilhetes para qualquer filme em exibição nas salas parceiras.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 1.000</span>
+                                    <button class="btn-outline" onclick="redeemReward('Bilhete Cinema Duplo', 1000)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-lazer">
+                            <div class="r-image bg-lazer"><span class="r-cat-badge">Lazer</span><i class="ph ph-paint-brush"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Entrada Gratuita em Museus</h3>
+                                <p class="r-desc">Acesso livre a museus de arte e história moderna geridos pelo estado.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 700</span>
+                                    <button class="btn-outline" onclick="redeemReward('Entrada Museu', 700)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-lazer">
+                            <div class="r-image bg-lazer"><span class="r-cat-badge">Lazer</span><i class="ph ph-television"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">1 Mês Assinatura Netflix</h3>
+                                <p class="r-desc">Voucher de gift card válido para 1 mês de subscrição standard.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 1.600</span>
+                                    <button class="btn-outline" onclick="redeemReward('1 Mês Netflix', 1600)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SERVIÇOS -->
+                        <div class="reward-card item-servicos">
+                            <div class="r-image bg-servicos"><span class="r-cat-badge">Serviços</span><i class="ph ph-lightbulb"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Desconto 15% na Conta da Luz</h3>
+                                <p class="r-desc">Apoio para a sua conta de eletricidade. Válido para operadoras de energia verde.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 2.500</span>
+                                    <button class="btn-outline" onclick="redeemReward('Desconto Luz', 2500)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-servicos">
+                            <div class="r-image bg-servicos"><span class="r-cat-badge">Serviços</span><i class="ph ph-drop"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Desconto 10% na Fatura da Água</h3>
+                                <p class="r-desc">Subsídio municipal aplicável diretamente à sua próxima fatura de água e saneamento.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 1.800</span>
+                                    <button class="btn-outline" onclick="redeemReward('Desconto Água', 1800)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-servicos">
+                            <div class="r-image bg-servicos"><span class="r-cat-badge">Serviços</span><i class="ph ph-car-profile"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Lavagem Ecológica Automóvel</h3>
+                                <p class="r-desc">Lavagem a seco do seu veículo, poupando até 300L de água potável.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 1.200</span>
+                                    <button class="btn-outline" onclick="redeemReward('Lavagem Ecológica', 1200)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRODUTOS ECO -->
+                        <div class="reward-card item-produtos">
+                            <div class="r-image bg-produtos"><span class="r-cat-badge">Produtos Eco</span><i class="ph ph-tote"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Ecobag Personalizada</h3>
+                                <p class="r-desc">Saco de pano ecológico muito resistente. Fim aos sacos de plástico no mercado!</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 600</span>
+                                    <button class="btn-outline" onclick="redeemReward('Ecobag', 600)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-produtos">
+                            <div class="r-image bg-produtos"><span class="r-cat-badge">Produtos Eco</span><i class="ph ph-thermometer"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Garrafa Térmica em Inox</h3>
+                                <p class="r-desc">Mantenha a sua água fria ou o café quente, eliminando as garrafas descartáveis.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 1.500</span>
+                                    <button class="btn-outline" onclick="redeemReward('Garrafa Térmica', 1500)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-produtos">
+                            <div class="r-image bg-produtos"><span class="r-cat-badge">Produtos Eco</span><i class="ph ph-flower-tulip"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Kit Escova de Dentes em Bambu</h3>
+                                <p class="r-desc">Conjunto de 3 escovas de dentes 100% biodegradáveis com cerdas suaves.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 400</span>
+                                    <button class="btn-outline" onclick="redeemReward('Escova de Bambu', 400)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reward-card item-produtos">
+                            <div class="r-image bg-produtos"><span class="r-cat-badge">Produtos Eco</span><i class="ph ph-leaf"></i></div>
+                            <div class="r-content">
+                                <h3 class="r-title">Compostor Doméstico</h3>
+                                <p class="r-desc">Transforme resíduos orgânicos em adubo natural para as suas plantas em casa.</p>
+                                <div class="r-footer">
+                                    <span class="r-cost"><i class="ph-fill ph-coin"></i> 5.000</span>
+                                    <button class="btn-outline" onclick="redeemReward('Compostor Doméstico', 5000)">Resgatar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 4: MEDALHAS E RANKING (COMPETIÇÃO)
+                 ========================================== -->
+                <div id="view-medalhas" class="view-content">
+                    <div class="page-header">
+                        <h1>Medalhas e Ranking</h1>
+                        <p>Exiba o seu compromisso ecológico e veja onde se posiciona entre os cidadãos mais sustentáveis da sua área.</p>
+                    </div>
+
+                    <!-- Leaderboard (Competitividade) -->
+                    <div class="ranking-board">
+                        <div class="ranking-header">
+                            <h3><i class="ph-fill ph-trophy"></i> Top Recicladores (Sua Cidade)</h3>
+                            <span style="font-size: 0.875rem; font-weight: 600; background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: 999px">Semana 12</span>
+                        </div>
+                        <div class="ranking-list">
+                            <div class="ranking-item">
+                                <div class="rank-pos rank-1">1</div>
+                                <div class="rank-avatar" style="color: #f59e0b; border-color: #f59e0b">M</div>
+                                <div class="rank-info">
+                                    <h4>Maria Fernandes</h4>
+                                    <p>Nível Platina &bull; 120 Reciclagens</p>
+                                </div>
+                                <div class="rank-pts">18.450 <i class="ph-fill ph-coin" style="font-size: 0.9rem"></i></div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="rank-pos rank-2">2</div>
+                                <div class="rank-avatar" style="color: #94a3b8; border-color: #94a3b8">T</div>
+                                <div class="rank-info">
+                                    <h4>Tiago Silva</h4>
+                                    <p>Nível Diamante &bull; 95 Reciclagens</p>
+                                </div>
+                                <div class="rank-pts">14.200 <i class="ph-fill ph-coin" style="font-size: 0.9rem"></i></div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="rank-pos rank-3">3</div>
+                                <div class="rank-avatar" style="color: #b45309; border-color: #b45309">A</div>
+                                <div class="rank-info">
+                                    <h4>Ana Beatriz</h4>
+                                    <p>Nível Ouro &bull; 88 Reciclagens</p>
+                                </div>
+                                <div class="rank-pts">11.800 <i class="ph-fill ph-coin" style="font-size: 0.9rem"></i></div>
+                            </div>
+
+                            <!-- Separador visual -->
+                            <div style="text-align: center; color: var(--text-secondary); margin: 0.5rem 0">
+                                <i class="ph ph-dots-three-vertical"></i>
+                            </div>
+
+                            <!-- O Próprio Utilizador -->
+                            <div class="ranking-item is-me">
+                                <div class="rank-pos" style="color: var(--brand-primary)">14</div>
+                                <div class="rank-avatar" id="rank-my-avatar">J</div>
+                                <div class="rank-info">
+                                    <h4 style="color: var(--brand-primary)">Você (<span id="rank-my-name">João Silva</span>)</h4>
+                                    <p>Nível Ouro &bull; A subir rapidamente!</p>
+                                </div>
+                                <div class="rank-pts" id="rank-my-points">4.250 <i class="ph-fill ph-coin" style="font-size: 0.9rem"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categorias de Medalhas -->
+
+                    <!-- Medalhas de Ouro (Difíceis) -->
+                    <div class="badges-category rarity-ouro">
+                        <h3><i class="ph-fill ph-crown" style="color: #f59e0b"></i> Desafios de Ouro (Avançado)</h3>
+                        <div class="badges-grid">
+                            <div class="badge-card locked">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-globe-hemisphere-west"></i></div>
+                                <h4>Lenda Urbana</h4>
+                                <p>Acumule um histórico de 50.000 EcoPontos totais.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 8%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">BLOQUEADO (4.2k/50k)</span>
+                            </div>
+                            <div class="badge-card locked">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-waves"></i></div>
+                                <h4>Protetor dos Oceanos</h4>
+                                <p>Recicle mais de 1 tonelada de plástico e vidro.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 45%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">BLOQUEADO (450kg/1t)</span>
+                            </div>
+                            <div class="badge-card locked">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-megaphone"></i></div>
+                                <h4>Embaixador Verde</h4>
+                                <p>Convide 50 amigos para a plataforma com o seu código.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 10%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">BLOQUEADO (5/50)</span>
+                            </div>
+                            <div class="badge-card locked">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-calendar-check"></i></div>
+                                <h4>Guardião do Ano</h4>
+                                <p>Mantenha uma sequência de reciclagem por 365 dias.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 2%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">BLOQUEADO (7/365)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medalhas de Prata (Médias) -->
+                    <div class="badges-category rarity-prata">
+                        <h3><i class="ph-fill ph-shield-star" style="color: #64748b"></i> Desafios de Prata (Intermédio)</h3>
+                        <div class="badges-grid">
+                            <div class="badge-card">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-fire"></i></div>
+                                <h4>Sequência Quente</h4>
+                                <p>Faça reciclagens em 7 dias consecutivos.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 71%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">EM PROGRESSO (5/7)</span>
+                            </div>
+                            <div class="badge-card locked">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-sun-horizon"></i></div>
+                                <h4>Madrugador</h4>
+                                <p>Recicle 10 vezes entre as 05h00 e as 08h00 da manhã.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 20%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">BLOQUEADO (2/10)</span>
+                            </div>
+                            <div class="badge-card">
+                                <div class="badge-icon-wrapper" style="box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); background: var(--brand-primary); color: white">
+                                    <i class="ph-fill ph-battery-charging"></i>
+                                </div>
+                                <h4>Eletro-Consciente</h4>
+                                <p>Descartou pilhas e lixo eletrónico corretamente.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 100%; background: var(--brand-primary)"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem; color: var(--brand-primary)">CONCLUÍDO</span>
+                            </div>
+                            <div class="badge-card">
+                                <div class="badge-icon-wrapper" style="box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); background: var(--brand-primary); color: white">
+                                    <i class="ph-fill ph-shopping-bag"></i>
+                                </div>
+                                <h4>Comprador Sustentável</h4>
+                                <p>Resgatou o seu primeiro prémio no catálogo.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 100%; background: var(--brand-primary)"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem; color: var(--brand-primary)">CONCLUÍDO</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medalhas de Bronze (Iniciais) CORRIGIDAS -->
+                    <div class="badges-category rarity-bronze">
+                        <h3><i class="ph-fill ph-medal" style="color: #d97706"></i> Desafios de Bronze (Iniciante)</h3>
+                        <div class="badges-grid">
+                            <!-- Medalha Concluída -->
+                            <div class="badge-card">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-plant"></i></div>
+                                <h4>O Primeiro Passo</h4>
+                                <p>Criou a sua conta e fez a primeira reciclagem.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 100%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem; color: #d97706">CONCLUÍDO</span>
+                            </div>
+                            <!-- Medalha Concluída -->
+                            <div class="badge-card">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-bottle"></i></div>
+                                <h4>Herói do Plástico</h4>
+                                <p>Reciclou mais de 10kg de embalagens PET e plástico.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 100%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem; color: #d97706">CONCLUÍDO</span>
+                            </div>
+                            <!-- Medalha Concluída -->
+                            <div class="badge-card">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-file-text"></i></div>
+                                <h4>Poupador de Árvores</h4>
+                                <p>Alcançou a marca de 5kg de papelão depositado.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 100%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem; color: #d97706">CONCLUÍDO</span>
+                            </div>
+                            <!-- Medalha Em Progresso -->
+                            <div class="badge-card">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-wine"></i></div>
+                                <h4>Fã do Vidro</h4>
+                                <p>Leve garrafas de vidro ao ecoponto verde 10 vezes.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 50%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem; color: var(--text-secondary)">EM PROGRESSO (5/10)</span>
+                            </div>
+                            <!-- Medalhas Bloqueadas (Adicionadas para completar a secção) -->
+                            <div class="badge-card locked">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-moon-stars"></i></div>
+                                <h4>Notívago</h4>
+                                <p>Faça uma reciclagem após as 22h00.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">BLOQUEADO</span>
+                            </div>
+                            <div class="badge-card locked">
+                                <div class="badge-icon-wrapper"><i class="ph-fill ph-share-network"></i></div>
+                                <h4>Comunicador</h4>
+                                <p>Partilhe a sua primeira conquista nas redes sociais.</p>
+                                <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%"></div></div>
+                                <span style="font-size: 0.7rem; font-weight: 700; margin-top: 0.5rem">BLOQUEADO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 8: DESAFIOS SAZONAIS (NOVA)
+                 ========================================== -->
+                <div id="view-desafios" class="view-content">
+                    <div class="page-header">
+                        <h1>Desafios Sazonais</h1>
+                        <p>Participe em eventos comunitários de tempo limitado e ganhe recompensas épicas.</p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <div class="challenge-icon"><i class="ph-fill ph-drop"></i></div>
+                        <div class="challenge-info">
+                            <span class="challenge-badge">Termina em 5 dias</span>
+                            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem">Semana do Oceano Limpo</h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem">
+                                Ajude a nossa cidade a recolher 5.000 garrafas plásticas esta semana. A sua contribuição individual já gerou impacto!
+                            </p>
+
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.25rem">
+                                <span>A sua meta: 20 garrafas</span>
+                                <span style="color: var(--brand-primary)">12 / 20</span>
+                            </div>
+                            <div class="badge-progress" style="margin-bottom: 1rem"><div class="badge-progress-fill" style="width: 60%"></div></div>
+
+                            <button class="btn-primary" onclick="showToast('Progresso sincronizado com sucesso!')">Sincronizar Progresso</button>
+                        </div>
+                        <div
+                            style="
+                                background: var(--bg-primary);
+                                padding: 1.5rem;
+                                border-radius: var(--radius-md);
+                                text-align: center;
+                                border: 1px solid var(--border-color);
+                                min-width: 150px;
+                            "
+                        >
+                            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase">Recompensa</span>
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--brand-accent); margin-top: 0.5rem">
+                                + 1.500 <i class="ph-fill ph-coin" style="font-size: 1.2rem"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="challenge-card" style="opacity: 0.8; filter: grayscale(50%)">
+                        <div class="challenge-icon"><i class="ph-fill ph-leaf"></i></div>
+                        <div class="challenge-info">
+                            <span class="challenge-badge" style="background: var(--text-secondary)">Começa em Breve</span>
+                            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem">Maio Sem Papel</h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem">Desafio focado em digitalizar faturas e reciclar papelão antigo guardado em casa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 9: COMUNIDADE (NOVA)
+                 ========================================== -->
+                <div id="view-comunidade" class="view-content">
+                    <div class="page-header">
+                        <h1>A Minha Comunidade</h1>
+                        <p>Adicione amigos, acompanhe as suas conquistas e incentive-os a reciclar mais.</p>
+                    </div>
+
+                    <div class="data-row">
+                        <!-- Feed de Atividades -->
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-broadcast"></i> Feed de Atividades</div>
+                            </div>
+                            <div class="feed-list">
+                                <div class="feed-item">
+                                    <div class="feed-avatar">M</div>
+                                    <div class="feed-content">
+                                        <h4>
+                                            Marta Costa <span style="font-weight: 400; color: var(--text-secondary)">alcançou o nível</span> Platina
+                                            <i class="ph-fill ph-medal" style="color: #64748b"></i>
+                                        </h4>
+                                        <div class="feed-time"><i class="ph ph-clock"></i> Há 2 horas</div>
+                                    </div>
+                                </div>
+                                <div class="feed-item">
+                                    <div class="feed-avatar" style="background: #fef3c7; color: #d97706">P</div>
+                                    <div class="feed-content">
+                                        <h4>Pedro Nuno <span style="font-weight: 400; color: var(--text-secondary)">desbloqueou a medalha</span> Eletro-Consciente</h4>
+                                        <p>Reciclou lixo eletrónico na Estação Central.</p>
+                                        <div class="feed-time"><i class="ph ph-clock"></i> Há 5 horas</div>
+                                    </div>
+                                </div>
+                                <div class="feed-item">
+                                    <div class="feed-avatar" style="background: #dbeafe; color: #1e3a8a">L</div>
+                                    <div class="feed-content">
+                                        <h4>Laura Sofia <span style="font-weight: 400; color: var(--text-secondary)">resgatou um prémio:</span> 1 Mês Netflix</h4>
+                                        <div class="feed-time"><i class="ph ph-clock"></i> Ontem</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Amigos / Adicionar -->
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-users"></i> Os Seus Amigos</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem">
+                                <input
+                                    type="text"
+                                    placeholder="Procurar por @username"
+                                    style="
+                                        flex: 1;
+                                        padding: 0.5rem 1rem;
+                                        border: 1px solid var(--border-color);
+                                        border-radius: var(--radius-md);
+                                        font-family: &quot;Inter&quot;;
+                                        outline: none;
+                                    "
+                                />
+                                <button class="btn-primary" style="padding: 0.5rem 1rem"><i class="ph ph-user-plus"></i></button>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color)">
+                                <div style="display: flex; align-items: center; gap: 0.75rem">
+                                    <div
+                                        style="
+                                            width: 32px;
+                                            height: 32px;
+                                            background: var(--bg-secondary);
+                                            border-radius: 50%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            border: 1px solid var(--border-color);
+                                        "
+                                    >
+                                        M
+                                    </div>
+                                    <span style="font-weight: 600; font-size: 0.875rem">Marta Costa</span>
+                                </div>
+                                <span style="color: var(--brand-primary); font-weight: 800; font-size: 0.875rem">18.4k <i class="ph-fill ph-coin"></i></span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color)">
+                                <div style="display: flex; align-items: center; gap: 0.75rem">
+                                    <div
+                                        style="
+                                            width: 32px;
+                                            height: 32px;
+                                            background: var(--bg-secondary);
+                                            border-radius: 50%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            border: 1px solid var(--border-color);
+                                        "
+                                    >
+                                        P
+                                    </div>
+                                    <span style="font-weight: 600; font-size: 0.875rem">Pedro Nuno</span>
+                                </div>
+                                <span style="color: var(--brand-primary); font-weight: 800; font-size: 0.875rem">9.2k <i class="ph-fill ph-coin"></i></span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0">
+                                <div style="display: flex; align-items: center; gap: 0.75rem">
+                                    <div
+                                        style="
+                                            width: 32px;
+                                            height: 32px;
+                                            background: var(--bg-secondary);
+                                            border-radius: 50%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            border: 1px solid var(--border-color);
+                                        "
+                                    >
+                                        L
+                                    </div>
+                                    <span style="font-weight: 600; font-size: 0.875rem">Laura Sofia</span>
+                                </div>
+                                <span style="color: var(--brand-primary); font-weight: 800; font-size: 0.875rem">5.1k <i class="ph-fill ph-coin"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 10: IMPACTO (NOVA)
+                 ========================================== -->
+                <div id="view-impacto" class="view-content">
+                    <div class="page-header">
+                        <h1>O Meu Impacto</h1>
+                        <p>Veja como as suas ações estão a ajudar a limpar o mundo ao longo do tempo.</p>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title"><i class="ph-fill ph-chart-bar"></i> Lixo Reciclado (Últimos Meses)</div>
+                            <span style="font-size: 0.875rem; color: var(--text-secondary); font-weight: 600">Total: 45 kg</span>
+                        </div>
+
+                        <!-- Gráfico Simulado com Flex/CSS -->
+                        <div class="chart-container">
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="height: 30%"><span class="chart-val">4 kg</span></div>
+                                <span class="chart-label">Dez</span>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="height: 55%"><span class="chart-val">8 kg</span></div>
+                                <span class="chart-label">Jan</span>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="height: 80%; background: var(--brand-accent)"><span class="chart-val">12 kg</span></div>
+                                <span class="chart-label" style="color: var(--brand-accent)">Fev</span>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="height: 100%"><span class="chart-val">15 kg</span></div>
+                                <span class="chart-label">Mar</span>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar" style="height: 40%"><span class="chart-val">6 kg</span></div>
+                                <span class="chart-label">Abr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title"><i class="ph-fill ph-chart-pie-slice"></i> Materiais Mais Reciclados</div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1rem">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem">
+                                    <span><i class="ph-fill ph-bottle" style="color: #3b82f6"></i> Plástico (45%)</span>
+                                    <span>20.2 kg</span>
+                                </div>
+                                <div class="badge-progress" style="background: var(--bg-primary); border: 1px solid var(--border-color)">
+                                    <div class="badge-progress-fill" style="width: 45%; background: #3b82f6"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem">
+                                    <span><i class="ph-fill ph-wine" style="color: #10b981"></i> Vidro (30%)</span>
+                                    <span>13.5 kg</span>
+                                </div>
+                                <div class="badge-progress" style="background: var(--bg-primary); border: 1px solid var(--border-color)">
+                                    <div class="badge-progress-fill" style="width: 30%; background: #10b981"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem">
+                                    <span><i class="ph-fill ph-file-text" style="color: #f59e0b"></i> Papel/Cartão (20%)</span>
+                                    <span>9.0 kg</span>
+                                </div>
+                                <div class="badge-progress" style="background: var(--bg-primary); border: 1px solid var(--border-color)">
+                                    <div class="badge-progress-fill" style="width: 20%; background: #f59e0b"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem">
+                                    <span><i class="ph-fill ph-battery-charging" style="color: #8b5cf6"></i> E-Waste (5%)</span>
+                                    <span>2.3 kg</span>
+                                </div>
+                                <div class="badge-progress" style="background: var(--bg-primary); border: 1px solid var(--border-color)">
+                                    <div class="badge-progress-fill" style="width: 5%; background: #8b5cf6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 11: HISTÓRICO (Existente)
+                 ========================================== -->
+                <div id="view-historico" class="view-content">
+                    <div class="page-header">
+                        <h1>O Meu Histórico</h1>
+                        <p>Acompanhe todos os pontos gerados pelas suas ações ecológicas e resgates efetuados.</p>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title"><i class="ph ph-list-dashes"></i> Movimentos Recentes</div>
+                            <button class="btn-outline"><i class="ph ph-download-simple"></i> Extrato em PDF</button>
+                        </div>
+
+                        <div style="overflow-x: auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Data / Hora</th>
+                                        <th>Tipo de Ação</th>
+                                        <th>Local / Parceiro</th>
+                                        <th>Status</th>
+                                        <th class="t-num" style="text-align: right">Valor (Pts)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Hoje, 14:32</td>
+                                        <td><i class="ph ph-recycle"></i> Reciclagem (Plástico/PET)</td>
+                                        <td>Ecoponto #A12 (Centro)</td>
+                                        <td><span class="badge badge-success">Validado IA</span></td>
+                                        <td class="t-num points-plus" style="text-align: right">+120</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ontem, 09:15</td>
+                                        <td><i class="ph ph-bus"></i> Resgate de Prémio</td>
+                                        <td>Passe Livre - Carris</td>
+                                        <td><span class="badge badge-warning">Cupão Gerado</span></td>
+                                        <td class="t-num points-minus" style="text-align: right">-500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 de Mar, 18:20</td>
+                                        <td><i class="ph ph-recycle"></i> Reciclagem (Vidro)</td>
+                                        <td>Ecoponto #B44 (Sul)</td>
+                                        <td><span class="badge badge-success">Validado IA</span></td>
+                                        <td class="t-num points-plus" style="text-align: right">+85</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 de Mar, 10:00</td>
+                                        <td><i class="ph ph-target"></i> Bónus: Missão Diária</td>
+                                        <td>App EcoRewards</td>
+                                        <td><span class="badge badge-success">Creditado</span></td>
+                                        <td class="t-num points-plus" style="text-align: right">+50</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 12: GUIA ECOLÓGICO (Existente)
+                 ========================================== -->
+                <div id="view-guia" class="view-content">
+                    <div class="page-header">
+                        <h1>Guia Ecológico</h1>
+                        <p>Aprenda a reciclar corretamente e a maximizar os seus EcoPontos.</p>
+                    </div>
+
+                    <div class="panel">
+                        <div class="guide-step">
+                            <div class="guide-num">01</div>
+                            <div class="guide-content">
+                                <h3>Limpe e Separe as Embalagens</h3>
+                                <p>
+                                    Antes de depositar, certifique-se de que as embalagens estão vazias e limpas. Remova resíduos de comida ou líquidos. Separe os materiais por tipo:
+                                    Plástico, Vidro, Papel/Cartão e Eletrónicos.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="guide-num">02</div>
+                            <div class="guide-content">
+                                <h3>Encontre um Ecoponto Inteligente</h3>
+                                <p>Use a nossa plataforma de Parceiros ou clique no mapa da sua visão geral para encontrar o ecoponto verde mais próximo de si.</p>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="guide-num">03</div>
+                            <div class="guide-content">
+                                <h3>Deposite e Gere o Código QR</h3>
+                                <p>Insira os materiais nas respetivas ranhuras. A máquina irá pesar, identificar o tipo de lixo e gerar um Código QR único no ecrã.</p>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="guide-num">04</div>
+                            <div class="guide-content">
+                                <h3>Faça a Leitura e Ganhe!</h3>
+                                <p>
+                                    Abra a aba "Ler Código QR" na nossa App, aponte a câmara e a nossa IA irá validar a transação. Os pontos caem diretamente no seu saldo para trocar por
+                                    prémios e subir no Ranking.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 13: PARCEIROS (Existente)
+                 ========================================== -->
+                <div id="view-parceiros" class="view-content">
+                    <div class="page-header">
+                        <h1>Os Nossos Parceiros</h1>
+                        <p>Empresas comprometidas com o meio ambiente que financiam as suas recompensas.</p>
+                    </div>
+
+                    <div class="partners-grid">
+                        <div class="partner-card">
+                            <div class="partner-logo" style="color: #3b82f6"><i class="ph-fill ph-bus"></i></div>
+                            <h3>Transportes Urbanos</h3>
+                            <p>Rede Municipal de Autocarros</p>
+                            <span class="badge badge-success">Parceiro Oficial</span>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo" style="color: #10b981"><i class="ph-fill ph-shopping-cart"></i></div>
+                            <h3>EcoMercados S.A.</h3>
+                            <p>Rede de Supermercados</p>
+                            <span class="badge badge-success">Parceiro Oficial</span>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo" style="color: #1db954"><i class="ph-fill ph-spotify-logo"></i></div>
+                            <h3>Spotify Streaming</h3>
+                            <p>Plataforma de Música</p>
+                            <span class="badge badge-warning">Patrocinador Lazer</span>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo" style="color: #f59e0b"><i class="ph-fill ph-lightning"></i></div>
+                            <h3>Energia Verde EDP</h3>
+                            <p>Fornecedora de Eletricidade</p>
+                            <span class="badge badge-success">Parceiro Oficial</span>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo" style="color: #000000"><i class="ph-fill ph-car-profile"></i></div>
+                            <h3>Uber Green</h3>
+                            <p>Mobilidade Sustentável</p>
+                            <span class="badge badge-warning">Patrocinador Transporte</span>
+                        </div>
+                        <div class="partner-card" style="border: 2px dashed var(--border-color); background: var(--bg-primary)">
+                            <div class="partner-logo" style="background: transparent"><i class="ph ph-plus"></i></div>
+                            <h3>A Sua Empresa Aqui</h3>
+                            <p>Junte-se à revolução ecológica</p>
+                            <button class="btn-outline" style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; font-size: 0.75rem">Saber Mais</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Container para Toasts -->
+        <div id="toast-container"></div>
+
+        
+        <script src="../js/b2c-dashboard.js"></script>
+
+    </body>
+</html>

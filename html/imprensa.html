@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Sala de Imprensa</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/imprensa.css" />
+
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="home.html" class="logo"> <i class="ph-fill ph-plant"></i> EcoRewards </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle"><i class="ph ph-moon"></i></button>
+                <a href="home.html" class="btn-outline">Voltar à Home</a>
+            </div>
+        </nav>
+
+        <main>
+            <section class="hero">
+                <h1>Sala de Imprensa</h1>
+                <p>Acompanhe as últimas novidades, estudos ambientais e o impacto da nossa plataforma na luta contra a poluição global.</p>
+            </section>
+
+            <!-- Artigo Principal -->
+            <section class="featured-article">
+                <article class="featured-card" style="cursor: pointer" onclick="showToast('A abrir reportagem completa...')">
+                    <div class="featured-img">
+                        <i class="ph-fill ph-globe-hemisphere-west"></i>
+                        <div
+                            style="
+                                position: absolute;
+                                bottom: 1rem;
+                                left: 1rem;
+                                background: rgba(0, 0, 0, 0.5);
+                                padding: 0.5rem 1rem;
+                                border-radius: 999px;
+                                color: white;
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                backdrop-filter: blur(4px);
+                            "
+                        >
+                            COMUNICADO OFICIAL
+                        </div>
+                    </div>
+                    <div class="featured-content">
+                        <span class="article-tag">Marco Histórico</span>
+                        <h2>EcoRewards atinge a marca de 1 milhão de toneladas de CO₂ evitadas</h2>
+                        <p>
+                            Num ano marcado por recordes de temperaturas globais, o sistema gamificado da EcoRewards provou que o engajamento cívico através de recompensas financeiras é a
+                            chave para o cumprimento das metas do Acordo de Paris nas grandes metrópoles.
+                        </p>
+                        <div class="article-date"><i class="ph ph-calendar-blank"></i> 14 de Março, 2026 &bull; <i class="ph ph-clock"></i> 4 min de leitura</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Grade de Notícias Secundárias -->
+            <section class="news-grid">
+                <article class="news-card" onclick="showToast('A carregar artigo sobre os Oceanos...')">
+                    <div class="news-img img-ocean">
+                        <i class="ph-fill ph-waves"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="article-tag" style="color: #0284c7">Crise Ambiental</span>
+                        <h3>A agonia dos Oceanos e o resgate da vida marinha</h3>
+                        <p>
+                            Estudos indicam que as micro-partículas de plástico afetam mais de 800 espécies. Saiba como a reciclagem correta de plásticos de uso único nas nossas máquinas
+                            evita que estes cheguem ao mar.
+                        </p>
+                        <span class="read-more">Ler Artigo <i class="ph ph-arrow-right"></i></span>
+                    </div>
+                </article>
+
+                <article class="news-card" onclick="showToast('A carregar estudo sobre Cidades...')">
+                    <div class="news-img img-city">
+                        <i class="ph-fill ph-buildings"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="article-tag">Estudo de Caso</span>
+                        <h3>Reciclagem gamificada aumenta adesão em 40%</h3>
+                        <p>
+                            Um estudo conduzido pela Universidade de São Paulo revelou que cidadãos estão 40% mais propensos a reciclar o seu lixo doméstico quando expostos a sistemas de
+                            pontos e recompensas instantâneas.
+                        </p>
+                        <span class="read-more">Ler Artigo <i class="ph ph-arrow-right"></i></span>
+                    </div>
+                </article>
+
+                <article class="news-card" onclick="showToast('A carregar notícia sobre Lixo Eletrónico...')">
+                    <div class="news-img img-tech">
+                        <i class="ph-fill ph-battery-charging"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="article-tag" style="color: #7c3aed">Tecnologia</span>
+                        <h3>O perigo invisível do Lixo Eletrónico nas cidades</h3>
+                        <p>
+                            Baterias e telemóveis antigos deitados no lixo comum estão a contaminar os lençóis freáticos com metais pesados. A EcoRewards introduz hoje 50 novos Ecopontos
+                            exclusivos para E-Waste.
+                        </p>
+                        <span class="read-more">Ler Artigo <i class="ph ph-arrow-right"></i></span>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Press Kit -->
+            <div style="max-width: 1200px; margin: 0 auto 5rem auto; padding: 0 5%">
+                <div style="background: var(--bg-secondary); border: 1px dashed var(--brand-primary); border-radius: var(--radius-lg); padding: 3rem; text-align: center">
+                    <i class="ph-fill ph-folder-open" style="font-size: 3rem; color: var(--brand-primary); margin-bottom: 1rem"></i>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem">És Jornalista?</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto">
+                        Aceda ao nosso Press Kit oficial com logótipos em alta resolução, fotografias dos Ecopontos e informações detalhadas para a sua reportagem.
+                    </p>
+                    <button class="btn-outline" onclick="showToast('O download do PressKit.zip foi iniciado.')"><i class="ph ph-download-simple"></i> Descarregar Press Kit (24MB)</button>
+                </div>
+            </div>
+        </main>
+
+        <div id="toast-container"></div>
+
+        
+        <script src="../js/imprensa.js"></script>
+
+    </body>
+</html>

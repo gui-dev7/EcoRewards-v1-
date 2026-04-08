@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Portal Corporativo (ESG)</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/b2b-dashboard.css" />
+
+    </head>
+    <body>
+        <div class="dashboard-container">
+            <!-- SIDEBAR -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo"><i class="ph-fill ph-buildings"></i> EcoRewards</div>
+                    <button class="icon-btn d-md-none menu-toggle" style="display: none; color: white" onclick="document.getElementById('sidebar').classList.remove('active')">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+
+                <div class="corp-badge">
+                    <p class="corp-title">Portal Empresarial</p>
+                    <div class="corp-name">
+                        <div class="corp-icon"><i class="ph-bold ph-briefcase"></i></div>
+                        TechCorp S.A.
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-category">Estratégia ESG</div>
+                    <button class="nav-item active" data-target="dashboard"><i class="ph ph-squares-four"></i> Visão Geral</button>
+                    <button class="nav-item" data-target="metas"><i class="ph ph-target"></i> Metas ESG Corporativas</button>
+                    <button class="nav-item" data-target="relatorios"><i class="ph ph-file-pdf"></i> Relatórios de Sustentabilidade</button>
+
+                    <div class="nav-category">Engajamento & Equipa</div>
+                    <button class="nav-item" data-target="ranking"><i class="ph ph-trophy"></i> Ranking de Departamentos</button>
+                    <button class="nav-item" data-target="colaboradores"><i class="ph ph-users"></i> Gestão de Colaboradores</button>
+                    <button class="nav-item" data-target="recompensas"><i class="ph ph-gift"></i> Fundo de Recompensas</button>
+
+                    <div class="nav-category">Configurações</div>
+                    <button class="nav-item" data-target="comunicacao"><i class="ph ph-megaphone"></i> Comunicação Interna</button>
+                    <button class="nav-item" onclick="window.location.href = 'profile.html?persona=b2b'"><i class="ph ph-gear"></i> Perfil da Empresa</button>
+                </nav>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <header class="topbar">
+                    <button class="icon-btn menu-toggle" style="display: none" onclick="document.getElementById('sidebar').classList.add('active')"><i class="ph ph-list"></i></button>
+
+                    <div class="live-badge d-none d-md-flex">
+                        <div class="live-dot"></div>
+                        Portal Corporativo Ativo
+                    </div>
+
+                    <div class="topbar-right">
+                        <button class="icon-btn" id="themeToggle" title="Alternar Tema"><i class="ph ph-moon"></i></button>
+                        <button class="icon-btn" onclick="showToast('As suas metas ESG foram atualizadas.', 'success')"><i class="ph ph-bell"></i></button>
+
+                        <a href="profile.html?persona=b2b" class="user-profile">
+                            <div class="avatar" id="avatar-b2b">CM</div>
+                            <div class="user-info">
+                                <h4 id="dashboard-user-name">Carlos Mendes</h4>
+                                <p>Gestor ESG</p>
+                            </div>
+                        </a>
+                    </div>
+                </header>
+
+                <!-- ==========================================
+                 VIEW 1: VISÃO GERAL (DASHBOARD)
+                 ========================================== -->
+                <div id="view-dashboard" class="view-content active">
+                    <div class="page-header">
+                        <div>
+                            <h1>Dashboard Corporativo</h1>
+                            <p>Resumo do impacto ambiental da sua empresa e engajamento dos colaboradores.</p>
+                        </div>
+                        <button class="btn-primary" onclick="document.querySelector('.nav-item[data-target=\'relatorios\']').click()">
+                            <i class="ph ph-download-simple"></i> Baixar Resumo
+                        </button>
+                    </div>
+
+                    <div class="grid-4">
+                        <div class="kpi-card kpi-success">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Score ESG Atual</span>
+                                <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--status-success)"><i class="ph-fill ph-star"></i></div>
+                            </div>
+                            <div class="kpi-value">84/100</div>
+                            <div class="kpi-trend trend-up"><i class="ph-bold ph-trend-up"></i> +12 pts este ano</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Reciclagem (Colaboradores)</span>
+                                <div class="kpi-icon"><i class="ph-fill ph-recycle"></i></div>
+                            </div>
+                            <div class="kpi-value">4.2 Ton</div>
+                            <div class="kpi-trend trend-up"><i class="ph-bold ph-trend-up"></i> +8% vs Mês Ant.</div>
+                        </div>
+                        <div class="kpi-card kpi-warning">
+                            <div class="kpi-header">
+                                <span class="kpi-title">CO₂ Evitado</span>
+                                <div class="kpi-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--brand-accent)"><i class="ph-fill ph-tree"></i></div>
+                            </div>
+                            <div class="kpi-value">1.120 kg</div>
+                            <div class="kpi-trend trend-up"><i class="ph-bold ph-trend-up"></i> Progresso contínuo</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-header">
+                                <span class="kpi-title">Adesão Interna</span>
+                                <div class="kpi-icon"><i class="ph-fill ph-users"></i></div>
+                            </div>
+                            <div class="kpi-value">78%</div>
+                            <div class="kpi-trend trend-up"><i class="ph-bold ph-trend-up"></i> 342 Colaboradores ativos</div>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-chart-line-up"></i> Volume Reciclado pela Equipa (2026)</div>
+                            </div>
+
+                            <!-- Novo Gráfico de Linha (Ilha) com Checkpoints -->
+                            <div style="height: 220px; width: 100%; position: relative; margin-top: 1.5rem; margin-bottom: 0.5rem">
+                                <!-- Eixo X (Rótulos) -->
+                                <div
+                                    style="
+                                        position: absolute;
+                                        bottom: -20px;
+                                        left: 0;
+                                        width: 100%;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        color: var(--text-secondary);
+                                        font-size: 0.75rem;
+                                        font-weight: 600;
+                                    "
+                                >
+                                    <span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span><span>Mar</span>
+                                </div>
+
+                                <!-- SVG Fundo (Área) e Linha -->
+                                <svg
+                                    viewBox="0 0 100 100"
+                                    preserveAspectRatio="none"
+                                    style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; overflow: visible; z-index: 1"
+                                >
+                                    <defs>
+                                        <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" stop-color="var(--brand-primary)" stop-opacity="0.35" />
+                                            <stop offset="100%" stop-color="var(--brand-primary)" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Polígono para a área preenchida -->
+                                    <polygon points="0,100 0,60 20,44.5 40,53.4 60,24.5 80,11.2 100,6.7 100,100" fill="url(#areaGradient)" />
+                                    <!-- Linha principal -->
+                                    <polyline
+                                        points="0,60 20,44.5 40,53.4 60,24.5 80,11.2 100,6.7"
+                                        fill="none"
+                                        stroke="var(--brand-primary)"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+
+                                <!-- Checkpoints Avançados (Interativos) -->
+                                <div class="checkpoint" style="left: 0%; top: 60%">
+                                    <div class="cp-dot"></div>
+                                    <div class="cp-tooltip">
+                                        <strong style="font-size: 0.85rem; color: var(--brand-light)">Outubro</strong><br />
+                                        1.8 Toneladas<br />
+                                        <span style="color: var(--text-sidebar)">210 Colaboradores</span>
+                                    </div>
+                                </div>
+
+                                <div class="checkpoint" style="left: 20%; top: 44.5%">
+                                    <div class="cp-dot"></div>
+                                    <div class="cp-tooltip">
+                                        <strong style="font-size: 0.85rem; color: var(--brand-light)">Novembro</strong><br />
+                                        2.5 Toneladas<br />
+                                        <span style="color: var(--text-sidebar)">245 Colaboradores</span>
+                                    </div>
+                                </div>
+
+                                <div class="checkpoint" style="left: 40%; top: 53.4%">
+                                    <div class="cp-dot"></div>
+                                    <div class="cp-tooltip">
+                                        <strong style="font-size: 0.85rem; color: var(--brand-light)">Dezembro</strong><br />
+                                        2.1 Toneladas<br />
+                                        <span style="color: var(--text-sidebar)">230 Colaboradores</span><br />
+                                        <span style="color: var(--status-warning); font-size: 0.7rem">Queda sazonal (Férias)</span>
+                                    </div>
+                                </div>
+
+                                <div class="checkpoint" style="left: 60%; top: 24.5%">
+                                    <div class="cp-dot"></div>
+                                    <div class="cp-tooltip">
+                                        <strong style="font-size: 0.85rem; color: var(--brand-light)">Janeiro</strong><br />
+                                        3.4 Toneladas<br />
+                                        <span style="color: var(--text-sidebar)">290 Colaboradores</span><br />
+                                        <span style="color: var(--status-success); font-size: 0.7rem">+ Campanha de Ano Novo</span>
+                                    </div>
+                                </div>
+
+                                <div class="checkpoint" style="left: 80%; top: 11.2%">
+                                    <div class="cp-dot"></div>
+                                    <div class="cp-tooltip">
+                                        <strong style="font-size: 0.85rem; color: var(--brand-light)">Fevereiro</strong><br />
+                                        4.0 Toneladas<br />
+                                        <span style="color: var(--text-sidebar)">325 Colaboradores</span>
+                                    </div>
+                                </div>
+
+                                <div class="checkpoint" style="left: 100%; top: 6.7%">
+                                    <div class="cp-dot" style="background: var(--brand-accent); border-color: var(--brand-accent)"></div>
+                                    <div class="cp-tooltip">
+                                        <strong style="font-size: 0.85rem; color: var(--brand-light)">Março (Atual)</strong><br />
+                                        4.2 Toneladas<br />
+                                        <span style="color: var(--text-sidebar)">342 Colaboradores</span><br />
+                                        <span style="color: var(--brand-accent); font-size: 0.7rem"><i class="ph-fill ph-fire"></i> Mês Recorde!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-target"></i> Metas Rápidas</div>
+                            </div>
+                            <div class="h-bar-item">
+                                <div class="h-bar-info"><span>Zero Plástico no Escritório</span><span>85%</span></div>
+                                <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="85%" style="background-color: var(--status-success)"></div></div>
+                            </div>
+                            <div class="h-bar-item">
+                                <div class="h-bar-info"><span>Digitalização (Menos Papel)</span><span>60%</span></div>
+                                <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="60%"></div></div>
+                            </div>
+                            <div class="h-bar-item">
+                                <div class="h-bar-info"><span>Engajamento em Mobilidade Verde</span><span>45%</span></div>
+                                <div class="h-bar-track"><div class="h-bar-fill anim-w" data-w="45%" style="background-color: var(--brand-accent)"></div></div>
+                            </div>
+                            <button
+                                class="btn-outline"
+                                style="width: 100%; justify-content: center; margin-top: 1rem"
+                                onclick="document.querySelector('.nav-item[data-target=\'metas\']').click()"
+                            >
+                                Ver Todas as Metas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 2: METAS ESG CORPORATIVAS
+                 ========================================== -->
+                <div id="view-metas" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Metas ESG Corporativas</h1>
+                            <p>Acompanhe os objetivos de sustentabilidade anuais definidos pela diretoria.</p>
+                        </div>
+                        <button class="btn-primary" onclick="showToast('A abrir editor de metas...', 'info')"><i class="ph ph-plus"></i> Nova Meta</button>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-leaf"></i> Ambiental (Environmental)</div>
+                            </div>
+
+                            <div class="h-bar-item" style="margin-bottom: 2rem">
+                                <div class="h-bar-info">
+                                    <div>
+                                        <h4 style="font-size: 1rem; color: var(--text-primary)">Redução de Resíduos Orgânicos</h4>
+                                        <p style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 400">Reduzir em 30% até Q4.</p>
+                                    </div>
+                                    <span style="font-size: 1.25rem">75%</span>
+                                </div>
+                                <div class="h-bar-track" style="height: 12px"><div class="h-bar-fill anim-w" data-w="75%" style="background: var(--brand-primary)"></div></div>
+                            </div>
+
+                            <div class="h-bar-item">
+                                <div class="h-bar-info">
+                                    <div>
+                                        <h4 style="font-size: 1rem; color: var(--text-primary)">Neutralidade Carbónica na Frota</h4>
+                                        <p style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 400">Transição para veículos elétricos.</p>
+                                    </div>
+                                    <span style="font-size: 1.25rem">40%</span>
+                                </div>
+                                <div class="h-bar-track" style="height: 12px"><div class="h-bar-fill anim-w" data-w="40%" style="background: var(--brand-accent)"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-users"></i> Social & Governança (S & G)</div>
+                            </div>
+
+                            <div class="h-bar-item" style="margin-bottom: 2rem">
+                                <div class="h-bar-info">
+                                    <div>
+                                        <h4 style="font-size: 1rem; color: var(--text-primary)">Engajamento na App EcoRewards</h4>
+                                        <p style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 400">Ter 90% da equipa a reciclar mensalmente.</p>
+                                    </div>
+                                    <span style="font-size: 1.25rem; color: var(--status-success)">86%</span>
+                                </div>
+                                <div class="h-bar-track" style="height: 12px"><div class="h-bar-fill anim-w" data-w="86%" style="background: var(--status-success)"></div></div>
+                            </div>
+
+                            <div class="h-bar-item">
+                                <div class="h-bar-info">
+                                    <div>
+                                        <h4 style="font-size: 1rem; color: var(--text-primary)">Treinamento em Sustentabilidade</h4>
+                                        <p style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 400">Horas de workshop concluídas.</p>
+                                    </div>
+                                    <span style="font-size: 1.25rem">60%</span>
+                                </div>
+                                <div class="h-bar-track" style="height: 12px"><div class="h-bar-fill anim-w" data-w="60%" style="background: var(--brand-primary)"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 3: RANKING DE DEPARTAMENTOS
+                 ========================================== -->
+                <div id="view-ranking" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Ranking Interno Gamificado</h1>
+                            <p>Incentive a competição saudável! O departamento vencedor no fim do mês ganha um bónus de saldo corporativo.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <!-- O Ranking -->
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-trophy"></i> Top Departamentos (Este Mês)</div>
+                            </div>
+
+                            <div class="ranking-item" style="border-color: var(--brand-accent); background: rgba(245, 158, 11, 0.05)">
+                                <div class="rank-pos rank-1">1</div>
+                                <div class="rank-info">
+                                    <h4>Recursos Humanos (RH)</h4>
+                                    <p>45 Colaboradores Ativos</p>
+                                </div>
+                                <div class="rank-score">12.450 <i class="ph-fill ph-leaf" style="font-size: 1rem"></i></div>
+                            </div>
+
+                            <div class="ranking-item">
+                                <div class="rank-pos rank-2">2</div>
+                                <div class="rank-info">
+                                    <h4>Marketing & Vendas</h4>
+                                    <p>62 Colaboradores Ativos</p>
+                                </div>
+                                <div class="rank-score">10.200 <i class="ph-fill ph-leaf" style="font-size: 1rem"></i></div>
+                            </div>
+
+                            <div class="ranking-item">
+                                <div class="rank-pos rank-3">3</div>
+                                <div class="rank-info">
+                                    <h4>Tecnologia da Informação (TI)</h4>
+                                    <p>38 Colaboradores Ativos</p>
+                                </div>
+                                <div class="rank-score">8.950 <i class="ph-fill ph-leaf" style="font-size: 1rem"></i></div>
+                            </div>
+
+                            <div class="ranking-item">
+                                <div class="rank-pos" style="color: var(--text-secondary); font-size: 1.25rem">4</div>
+                                <div class="rank-info">
+                                    <h4>Operações / Logística</h4>
+                                    <p>80 Colaboradores Ativos</p>
+                                </div>
+                                <div class="rank-score" style="color: var(--text-secondary)">6.100 <i class="ph-fill ph-leaf" style="font-size: 1rem"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Destaques Individuais -->
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-star"></i> Embaixadores da Empresa</div>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">Estes são os colaboradores que mais pontuaram individualmente esta semana.</p>
+
+                            <div style="display: flex; flex-direction: column; gap: 1rem">
+                                <div style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color)">
+                                    <div class="avatar" style="background: var(--brand-accent)">AF</div>
+                                    <div>
+                                        <h4 style="font-size: 0.9375rem; font-weight: 700">Ana Filipa (RH)</h4>
+                                        <p style="font-size: 0.75rem; color: var(--text-secondary)">Reciclou 15kg de eletrónicos</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color)">
+                                    <div class="avatar">JM</div>
+                                    <div>
+                                        <h4 style="font-size: 0.9375rem; font-weight: 700">João Macedo (TI)</h4>
+                                        <p style="font-size: 0.75rem; color: var(--text-secondary)">Sempre a usar transportes públicos</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 1rem">
+                                    <div class="avatar" style="background: var(--status-success)">PT</div>
+                                    <div>
+                                        <h4 style="font-size: 0.9375rem; font-weight: 700">Paula Torres (Mkt)</h4>
+                                        <p style="font-size: 0.75rem; color: var(--text-secondary)">Líder em reciclagem de plástico</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 4: GESTÃO DE COLABORADORES
+                 ========================================== -->
+                <div id="view-colaboradores" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Gestão de Colaboradores</h1>
+                            <p>Acompanhe as contas ativas e distribua bónus diretos aos seus funcionários.</p>
+                        </div>
+                        <button class="btn-primary" onclick="showToast('Link de convite corporativo copiado!', 'success')"><i class="ph ph-link"></i> Copiar Link de Convite</button>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title"><i class="ph-fill ph-users"></i> Equipa Registada</div>
+                            <input
+                                type="text"
+                                placeholder="Procurar colaborador..."
+                                style="padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 999px; outline: none"
+                            />
+                        </div>
+
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Colaborador</th>
+                                        <th>Departamento</th>
+                                        <th>Status Conta</th>
+                                        <th class="t-num">Pontos EcoRewards</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Carlos Mendes</strong><br /><span style="font-size: 0.75rem; color: var(--text-secondary)">carlos@techcorp.com</span></td>
+                                        <td>Marketing</td>
+                                        <td><span class="badge badge-success">Ativo (Nível Ouro)</span></td>
+                                        <td class="t-num" style="color: var(--brand-primary); font-weight: 700">4.250</td>
+                                        <td>
+                                            <button class="btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem" onclick="showToast('A abrir modal de bónus...', 'info')">
+                                                Dar Bónus
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ana Filipa</strong><br /><span style="font-size: 0.75rem; color: var(--text-secondary)">ana.f@techcorp.com</span></td>
+                                        <td>Recursos Humanos</td>
+                                        <td><span class="badge badge-success">Ativo (Nível Platina)</span></td>
+                                        <td class="t-num" style="color: var(--brand-primary); font-weight: 700">8.100</td>
+                                        <td>
+                                            <button class="btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem" onclick="showToast('A abrir modal de bónus...', 'info')">
+                                                Dar Bónus
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sérgio Tavares</strong><br /><span style="font-size: 0.75rem; color: var(--text-secondary)">sergio@techcorp.com</span></td>
+                                        <td>Operações</td>
+                                        <td><span class="badge badge-warning">Inativo há 30 dias</span></td>
+                                        <td class="t-num" style="color: var(--text-secondary); font-weight: 700">120</td>
+                                        <td>
+                                            <button
+                                                class="btn-outline"
+                                                style="padding: 0.35rem 0.75rem; font-size: 0.75rem"
+                                                onclick="showToast('Lembrete enviado ao colaborador.', 'success')"
+                                            >
+                                                Enviar Lembrete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 5: FUNDO DE RECOMPENSAS
+                 ========================================== -->
+                <div id="view-recompensas" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Fundo de Recompensas Corporativo</h1>
+                            <p>Faça a gestão do orçamento que a empresa injeta no ecossistema para premiar os funcionários.</p>
+                        </div>
+                        <button class="btn-primary" style="background: var(--status-success)" onclick="showToast('A abrir gateway de pagamento (Checkout)...', 'info')">
+                            <i class="ph ph-plus-circle"></i> Adicionar Fundos
+                        </button>
+                    </div>
+
+                    <div class="grid-3">
+                        <div class="kpi-card" style="background: var(--bg-sidebar); color: white; border-color: transparent">
+                            <div class="kpi-header"><span class="kpi-title" style="color: var(--brand-light)">Saldo Disponível (Carteira)</span></div>
+                            <div class="kpi-value" style="color: white">€ 2.450,00</div>
+                            <div class="kpi-trend" style="color: var(--brand-light)">Pronto para ser distribuído</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-header"><span class="kpi-title">Pontos Convertidos (Histórico)</span></div>
+                            <div class="kpi-value" style="color: var(--brand-primary)">145k <i class="ph-fill ph-leaf" style="font-size: 1.5rem"></i></div>
+                            <div class="kpi-trend">Gerados pela sua equipa</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-header"><span class="kpi-title">Recompensas Resgatadas</span></div>
+                            <div class="kpi-value">48</div>
+                            <div class="kpi-trend">Este Mês</div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title"><i class="ph-fill ph-clock-counter-clockwise"></i> Histórico de Distribuição</div>
+                        </div>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">Registo de todos os bónus atribuídos e fundos carregados.</p>
+
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Tipo de Movimento</th>
+                                        <th>Descrição / Alvo</th>
+                                        <th class="t-num">Valor (€)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>01 Mar, 2026</td>
+                                        <td><span class="badge badge-success">Carregamento</span></td>
+                                        <td>Adição mensal de fundos pela diretoria</td>
+                                        <td class="t-num" style="color: var(--status-success); font-weight: 700">+ € 1.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28 Fev, 2026</td>
+                                        <td><span class="badge badge-warning" style="background: rgba(245, 158, 11, 0.1); color: #d97706">Bónus de Ranking</span></td>
+                                        <td>Prémio distribuído ao departamento de RH (1º Lugar)</td>
+                                        <td class="t-num" style="font-weight: 700">- € 300,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 Fev, 2026</td>
+                                        <td><span class="badge badge-info">Bónus Individual</span></td>
+                                        <td>Prémio de mérito para "Ana Filipa"</td>
+                                        <td class="t-num" style="font-weight: 700">- € 50,00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 6: RELATÓRIOS ESG E COMPLIANCE
+                 ========================================== -->
+                <div id="view-relatorios" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Relatórios de Sustentabilidade (ESG)</h1>
+                            <p>Exporte a prova do impacto ecológico da sua empresa para auditorias ou marketing.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-3">
+                        <div class="panel" style="text-align: center; padding: 3rem 1.5rem">
+                            <i class="ph-fill ph-file-pdf" style="font-size: 4rem; color: #ef4444; margin-bottom: 1rem"></i>
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem">Certificado de Carbono (PDF)</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">Documento oficial comprovando as toneladas de CO₂ poupadas pela empresa.</p>
+                            <button class="btn-primary" style="width: 100%; justify-content: center" onclick="showToast('A gerar PDF de Certificação...', 'info')">
+                                Exportar PDF Oficial
+                            </button>
+                        </div>
+
+                        <div class="panel" style="text-align: center; padding: 3rem 1.5rem">
+                            <i class="ph-fill ph-file-xls" style="font-size: 4rem; color: #10b981; margin-bottom: 1rem"></i>
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem">Dados Detalhados (Excel)</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">
+                                Base de dados bruta com todas as leituras de reciclagem feitas pelos colaboradores.
+                            </p>
+                            <button
+                                class="btn-primary"
+                                style="width: 100%; justify-content: center; background: #10b981"
+                                onclick="showToast('A processar ficheiro Excel (.xlsx)...', 'info')"
+                            >
+                                Baixar Raw Data
+                            </button>
+                        </div>
+
+                        <div class="panel" style="text-align: center; padding: 3rem 1.5rem">
+                            <i class="ph-fill ph-image" style="font-size: 4rem; color: var(--brand-primary); margin-bottom: 1rem"></i>
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem">Kit de Redes Sociais</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem">
+                                Imagens e gráficos prontos a partilhar no LinkedIn sobre o sucesso da sua equipa.
+                            </p>
+                            <button class="btn-outline" style="width: 100%; justify-content: center" onclick="showToast('A descarregar ficheiro .zip com imagens.', 'success')">
+                                Baixar Pack (Zip)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                 VIEW 7: COMUNICAÇÃO INTERNA
+                 ========================================== -->
+                <div id="view-comunicacao" class="view-content">
+                    <div class="page-header">
+                        <div>
+                            <h1>Comunicados Internos</h1>
+                            <p>Envie notificações, desafios e incentivos diretamente para a App dos colaboradores.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="panel">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-paper-plane-tilt"></i> Nova Mensagem Push</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 1rem">
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem">
+                                    <label style="font-size: 0.875rem; font-weight: 600">Título da Notificação</label>
+                                    <input
+                                        type="text"
+                                        placeholder="Ex: Desafio de Sexta-feira!"
+                                        style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); outline: none; font-family: &quot;Inter&quot;"
+                                    />
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem">
+                                    <label style="font-size: 0.875rem; font-weight: 600">Mensagem</label>
+                                    <textarea
+                                        placeholder="Escreva a mensagem que aparecerá no telemóvel da equipa..."
+                                        style="
+                                            padding: 0.75rem;
+                                            border: 1px solid var(--border-color);
+                                            border-radius: var(--radius-md);
+                                            outline: none;
+                                            font-family: &quot;Inter&quot;;
+                                            min-height: 100px;
+                                            resize: vertical;
+                                        "
+                                    ></textarea>
+                                </div>
+                                <button
+                                    class="btn-primary"
+                                    style="margin-top: 0.5rem; justify-content: center"
+                                    onclick="showToast('Notificação Push enviada para 342 colaboradores!', 'success')"
+                                >
+                                    Enviar para Toda a Empresa
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="panel" style="background: linear-gradient(135deg, var(--brand-light), var(--bg-primary))">
+                            <div class="panel-header">
+                                <div class="panel-title"><i class="ph-fill ph-lightbulb"></i> Ideias de Engajamento</div>
+                            </div>
+                            <ul style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9375rem">
+                                <li style="display: flex; gap: 0.5rem; align-items: flex-start">
+                                    <i class="ph-fill ph-check-circle" style="color: var(--brand-primary); margin-top: 0.25rem"></i>
+                                    <span><strong>Crie um Dia Sem Plástico:</strong> Envie um push a pedir para ninguém trazer garrafas descartáveis amanhã.</span>
+                                </li>
+                                <li style="display: flex; gap: 0.5rem; align-items: flex-start">
+                                    <i class="ph-fill ph-check-circle" style="color: var(--brand-primary); margin-top: 0.25rem"></i>
+                                    <span><strong>Desafio de Transporte:</strong> Incentive a equipa a vir de transportes públicos durante 1 semana em troca de 500 EcoPontos bónus.</span>
+                                </li>
+                                <li style="display: flex; gap: 0.5rem; align-items: flex-start">
+                                    <i class="ph-fill ph-check-circle" style="color: var(--brand-primary); margin-top: 0.25rem"></i>
+                                    <span><strong>Comemore as Vitórias:</strong> Quando o Score ESG subir, agradeça publicamente a todos.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Toasts -->
+        <div id="toast-container"></div>
+
+        
+        <script src="../js/b2b-dashboard.js"></script>
+
+    </body>
+</html>

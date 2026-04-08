@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Contacto</title>
+
+        <!-- Fontes e Ícones -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/contato.css" />
+
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a href="home.html" class="logo"> <i class="ph-fill ph-plant"></i> EcoRewards </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Mudar Tema"><i class="ph ph-moon"></i></button>
+                <a href="home.html" class="btn-outline">Voltar à Home</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- HERO -->
+            <section class="hero">
+                <h1>Estamos aqui para <span>ajudar</span>.</h1>
+                <p>Tem dúvidas, sugestões ou quer tornar-se parceiro? Entre em contacto connosco e ajude-nos a melhorar o ecossistema.</p>
+            </section>
+
+            <!-- CONTACTOS E OPINIÃO -->
+            <section class="contact-container">
+                <!-- Informações de Contacto -->
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="ph-fill ph-phone"></i></div>
+                        <div class="contact-info">
+                            <h3>Telefone</h3>
+                            <p>+351 900 000 000<br /><span style="font-size: 0.8rem; color: var(--brand-primary)">Seg a Sex, 9h às 18h</span></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="ph-fill ph-envelope-simple"></i></div>
+                        <div class="contact-info">
+                            <h3>E-mail Geral</h3>
+                            <p>contato@ecorewards.com<br /><span style="font-size: 0.8rem; color: var(--brand-primary)">Respondemos em 24h</span></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="ph-fill ph-map-pin"></i></div>
+                        <div class="contact-info">
+                            <h3>Sede Oficial</h3>
+                            <p>Avenida Sustentável, nº 42<br /><span style="font-size: 0.8rem; color: var(--brand-primary)">São Paulo, BR | Lisboa, PT</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário Sua Opinião -->
+                <div class="feedback-form">
+                    <h2>A sua opinião importa!</h2>
+                    <p>Deixe a sua mensagem na nossa "letterbox". Lemos todos os feedbacks para melhorar a app.</p>
+
+                    <form id="feedbackForm">
+                        <div class="input-group">
+                            <label>O seu Nome</label>
+                            <input type="text" placeholder="Como gosta de ser chamado" required />
+                        </div>
+                        <div class="input-group">
+                            <label>E-mail de Contacto</label>
+                            <input type="email" placeholder="seu@email.com" required />
+                        </div>
+                        <div class="input-group">
+                            <label>A sua Mensagem / Sugestão</label>
+                            <textarea placeholder="O que gostaria de ver na próxima atualização da EcoRewards?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Mensagem <i class="ph ph-paper-plane-right"></i></button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- MINI JOGO -->
+            <section class="game-section">
+                <div class="game-header">
+                    <h2>Um pouco de diversão verde!</h2>
+                    <p>Aguardar por uma resposta não tem de ser aborrecido. Ajude a folha a desviar-se do lixo!</p>
+                </div>
+
+                <div class="game-container" id="gameContainer">
+                    <div class="score-board">PTS: <span id="score">0</span></div>
+                    <div class="game-ground"></div>
+
+                    <div id="player"><i class="ph-fill ph-leaf"></i></div>
+                    <div id="obstacle"><i class="ph-fill ph-trash"></i></div>
+
+                    <div class="start-overlay" id="startOverlay">
+                        <h3>Eco-Jump!</h3>
+                        <p style="margin-bottom: 1rem; color: var(--text-secondary)">Pressione Espaço ou Clique para saltar.</p>
+                        <button class="btn-play" onclick="startGame(event)">Jogar Agora</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="toast-container"></div>
+
+        
+        <script src="../js/contato.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoRewards | Ecopontos Parceiros</title>
+
+        <!-- Fontes e Ícones -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+        
+        <link rel="stylesheet" href="../css/ecopontos.css" />
+
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a href="home.html" class="logo"> <i class="ph-fill ph-plant"></i> EcoRewards </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Mudar Tema"><i class="ph ph-moon"></i></button>
+                <a href="index.html" class="btn-outline">Iniciar Sessão</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Cabeçalho -->
+            <header class="page-header">
+                <h1>Rede de Ecopontos Parceiros</h1>
+                <p>Descubra os pontos de recolha inteligente mais próximos de si. Filtre por material e veja as opções em tempo real no mapa.</p>
+
+                <div class="search-box">
+                    <div class="search-icon"><i class="ph ph-magnifying-glass"></i></div>
+                    <input type="text" id="searchInput" placeholder="Pesquise por rua, bairro ou parceiro..." onkeyup="applyFilters()" />
+                    <button onclick="applyFilters()">Procurar</button>
+                </div>
+
+                <div class="material-filters">
+                    <button class="m-filter active" data-filter="all" onclick="setFilter(this)"><i class="ph-fill ph-squares-four"></i> Todos</button>
+                    <button class="m-filter" data-filter="plastico" onclick="setFilter(this)"><i class="ph-fill ph-bottle"></i> Plástico & Metal</button>
+                    <button class="m-filter" data-filter="vidro" onclick="setFilter(this)"><i class="ph-fill ph-wine"></i> Vidro</button>
+                    <button class="m-filter" data-filter="papel" onclick="setFilter(this)"><i class="ph-fill ph-file-text"></i> Papel</button>
+                    <button class="m-filter" data-filter="eletronico" onclick="setFilter(this)"><i class="ph-fill ph-battery-charging"></i> Eletrónico</button>
+                </div>
+            </header>
+
+            <!-- Container Mapa e Lista -->
+            <section class="locations-container">
+                <!-- Lista de Resultados -->
+                <div class="locations-list" id="list-container">
+                    <!-- Item 1 -->
+                    <div class="location-card active" id="card-1" data-types="plastico,vidro,papel" onclick="activateLocation(1)">
+                        <div class="loc-icon"><i class="ph-fill ph-shopping-cart"></i></div>
+                        <div class="loc-info">
+                            <div class="loc-info-header">
+                                <h3>Supermercado EcoCenter</h3>
+                                <span class="loc-status status-open"><i class="ph-fill ph-check-circle"></i> Aberto</span>
+                            </div>
+                            <p><i class="ph-fill ph-map-pin" style="color: var(--brand-primary)"></i> Av. da Liberdade, 45 - Centro (a 1.2km)</p>
+                            <div class="loc-tags">
+                                <span class="tag tag-plastico"><i class="ph-fill ph-bottle"></i> Plástico/Metal</span>
+                                <span class="tag tag-vidro"><i class="ph-fill ph-wine"></i> Vidro</span>
+                                <span class="tag tag-papel"><i class="ph-fill ph-file-text"></i> Papel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="location-card" id="card-2" data-types="plastico,eletronico" onclick="activateLocation(2)">
+                        <div class="loc-icon"><i class="ph-fill ph-train"></i></div>
+                        <div class="loc-info">
+                            <div class="loc-info-header">
+                                <h3>Estação de Metro (Azul)</h3>
+                                <span class="loc-status status-open"><i class="ph-fill ph-check-circle"></i> Aberto</span>
+                            </div>
+                            <p><i class="ph-fill ph-map-pin" style="color: var(--brand-primary)"></i> Praça Marquês de Pombal (a 2.5km)</p>
+                            <div class="loc-tags">
+                                <span class="tag tag-plastico"><i class="ph-fill ph-bottle"></i> Plástico/Metal</span>
+                                <span class="tag tag-eletronico"><i class="ph-fill ph-battery-charging"></i> Eletrónicos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="location-card" id="card-3" data-types="vidro,papel" onclick="activateLocation(3)">
+                        <div class="loc-icon"><i class="ph-fill ph-buildings"></i></div>
+                        <div class="loc-info">
+                            <div class="loc-info-header">
+                                <h3>Junta de Freguesia - Polo A</h3>
+                                <span class="loc-status status-closed"><i class="ph-fill ph-clock"></i> Fechado</span>
+                            </div>
+                            <p><i class="ph-fill ph-map-pin" style="color: var(--brand-primary)"></i> Rua das Flores, 128 (a 3.1km)</p>
+                            <div class="loc-tags">
+                                <span class="tag tag-vidro"><i class="ph-fill ph-wine"></i> Vidro</span>
+                                <span class="tag tag-papel"><i class="ph-fill ph-file-text"></i> Papel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="location-card" id="card-4" data-types="plastico,papel,eletronico" onclick="activateLocation(4)">
+                        <div class="loc-icon"><i class="ph-fill ph-graduation-cap"></i></div>
+                        <div class="loc-info">
+                            <div class="loc-info-header">
+                                <h3>Campus Universitário</h3>
+                                <span class="loc-status status-open"><i class="ph-fill ph-check-circle"></i> Aberto</span>
+                            </div>
+                            <p><i class="ph-fill ph-map-pin" style="color: var(--brand-primary)"></i> Alameda da Universidade (a 5.0km)</p>
+                            <div class="loc-tags">
+                                <span class="tag tag-plastico"><i class="ph-fill ph-bottle"></i> Plástico/Metal</span>
+                                <span class="tag tag-papel"><i class="ph-fill ph-file-text"></i> Papel</span>
+                                <span class="tag tag-eletronico"><i class="ph-fill ph-battery-charging"></i> Pilhas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensagem de Sem Resultados -->
+                    <div class="no-results" id="no-results-msg">
+                        <i class="ph ph-magnifying-glass-minus"></i>
+                        <h3>Nenhum ecoponto encontrado</h3>
+                        <p>Tente procurar por outro termo ou alterar o filtro de material.</p>
+                    </div>
+                </div>
+
+                <!-- Visualização do Mapa -->
+                <div class="map-view">
+                    <div class="map-placeholder"></div>
+                    <div class="map-overlay"></div>
+
+                    <!-- Pins no Mapa -->
+                    <div class="map-pin active" id="pin-1" data-types="plastico,vidro,papel" style="top: 40%; left: 45%" title="Supermercado EcoCenter" onclick="activateLocation(1)">
+                        <div class="pin-body"><i class="ph-bold ph-shopping-cart"></i></div>
+                        <div class="pin-pulse"></div>
+                    </div>
+
+                    <div class="map-pin" id="pin-2" data-types="plastico,eletronico" style="top: 65%; left: 30%" title="Estação de Metro" onclick="activateLocation(2)">
+                        <div class="pin-body"><i class="ph-bold ph-train"></i></div>
+                        <div class="pin-pulse"></div>
+                    </div>
+
+                    <div class="map-pin" id="pin-3" data-types="vidro,papel" style="top: 30%; left: 65%" title="Junta de Freguesia" onclick="activateLocation(3)">
+                        <div class="pin-body" style="background-color: var(--text-secondary)"><i class="ph-bold ph-buildings"></i></div>
+                        <!-- Sem pulso quando fechado -->
+                    </div>
+
+                    <div class="map-pin" id="pin-4" data-types="plastico,papel,eletronico" style="top: 75%; left: 75%" title="Campus Universitário" onclick="activateLocation(4)">
+                        <div class="pin-body"><i class="ph-bold ph-graduation-cap"></i></div>
+                        <div class="pin-pulse"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        
+        <script src="../js/ecopontos.js"></script>
+
+    </body>
+</html>
