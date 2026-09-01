@@ -1,0 +1,178 @@
+import type { LiveEvent } from "@/types";
+
+/**
+ * Fila de eventos exibida no mural ao vivo da home. A rotação é feita
+ * pela interface: a lista em si é fixa e determinística, para que o
+ * conteúdo renderizado no servidor e no cliente sempre coincida.
+ * Os nomes de ecopontos, empresas e regiões batem com os demais mocks.
+ */
+export const LIVE_EVENTS: LiveEvent[] = [
+  {
+    id: "lve-01",
+    mensagem: "23 kg de plástico reciclados em São Paulo",
+    detalhe: "Ecoponto Pinheiros · +1.035 EcoPontos distribuídos",
+    tipo: "descarte",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-02",
+    mensagem: "EcoTech Brasil atingiu 68% da meta anual",
+    detalhe: "41,8 t de 64 t recicladas na campanha Escritório Zero Waste",
+    tipo: "meta",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-03",
+    mensagem: "Novo ecoponto disponível em Alto de Pinheiros",
+    detalhe: "Av. Pedroso de Morais, 1800 · aceita óleo e eletrônicos",
+    tipo: "ecoponto",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-04",
+    mensagem: "Passe de metrô resgatado por 1.200 EcoPontos",
+    detalhe: "Mobilidade Urbana SP · cinco viagens creditadas",
+    tipo: "resgate",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-05",
+    mensagem: "8,4 kg de eletrônicos entregues em Guarulhos",
+    detalhe: "Ecoponto Guarulhos Centro · logística reversa acionada",
+    tipo: "descarte",
+    cidade: "Guarulhos",
+  },
+  {
+    id: "lve-06",
+    mensagem: "Medalha Reciclador de Elite desbloqueada",
+    detalhe: "250 kg acumulados na plataforma · +500 XP",
+    tipo: "conquista",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-07",
+    mensagem: "Zona Leste passa de 108 mil usuários ativos",
+    detalhe: "Maior base da Região Metropolitana · crescimento de 14,2%",
+    tipo: "meta",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-08",
+    mensagem: "31 kg de papelão reciclados em Osasco",
+    detalhe: "Ecoponto Osasco Centro · +682 EcoPontos",
+    tipo: "descarte",
+    cidade: "Osasco",
+  },
+  {
+    id: "lve-09",
+    mensagem: "Cesta orgânica semanal resgatada",
+    detalhe: "Mercado Verde · 2.500 EcoPontos",
+    tipo: "resgate",
+    cidade: "Campinas",
+  },
+  {
+    id: "lve-10",
+    mensagem: "Ecoponto Sé bate recorde diário de visitas",
+    detalhe: "2.460 descartes no mês · 84% da capacidade ocupada",
+    tipo: "ecoponto",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-11",
+    mensagem: "14 kg de vidro reciclados em Santo André",
+    detalhe: "Ecoponto Santo André Centro · +252 EcoPontos",
+    tipo: "descarte",
+    cidade: "Santo André",
+  },
+  {
+    id: "lve-12",
+    mensagem: "Mutirão de Pinheiros chega a 1.120 kg",
+    detalhe: "284 participantes · meta coletiva de 1.500 kg",
+    tipo: "meta",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-13",
+    mensagem: "Trilha na Serra da Cantareira resgatada",
+    detalhe: "Trilha Viva · 2.000 EcoPontos por participante",
+    tipo: "resgate",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-14",
+    mensagem: "6,2 litros de óleo de cozinha coletados na Mooca",
+    detalhe: "Ecoponto Mooca · destino: produção de biodiesel",
+    tipo: "descarte",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-15",
+    mensagem: "Medalha Eco Explorer desbloqueada",
+    detalhe: "Cinco ecopontos diferentes visitados · +280 XP",
+    tipo: "conquista",
+    cidade: "Curitiba",
+  },
+  {
+    id: "lve-16",
+    mensagem: "Ecoponto Campo Limpo volta a operar em 12/09",
+    detalhe: "Manutenção da prensa e da balança em andamento",
+    tipo: "ecoponto",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-17",
+    mensagem: "19 kg de metal reciclados em São Bernardo do Campo",
+    detalhe: "Ecoponto São Bernardo do Campo · +1.140 EcoPontos",
+    tipo: "descarte",
+    cidade: "São Bernardo do Campo",
+  },
+  {
+    id: "lve-18",
+    mensagem: "Campanha São Paulo sem lixo eletrônico em 64%",
+    detalhe: "3.180 kg de 5.000 kg · 1.642 participantes",
+    tipo: "meta",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-19",
+    mensagem: "Crédito de R$ 30 na conta de luz resgatado",
+    detalhe: "Solar Coop · 1.500 EcoPontos",
+    tipo: "resgate",
+    cidade: "Santo André",
+  },
+  {
+    id: "lve-20",
+    mensagem: "Novo ecoponto disponível em Santana",
+    detalhe: "Av. Cruzeiro do Sul, 1800 · aberto de segunda a sábado",
+    tipo: "ecoponto",
+    cidade: "São Paulo",
+  },
+  {
+    id: "lve-21",
+    mensagem: "12 kg de papel reciclados em Belo Horizonte",
+    detalhe: "Ponto parceiro Savassi · +264 EcoPontos",
+    tipo: "descarte",
+    cidade: "Belo Horizonte",
+  },
+  {
+    id: "lve-22",
+    mensagem: "Medalha Impacto Local desbloqueada",
+    detalhe: "100 kg reciclados dentro do próprio bairro · +350 XP",
+    tipo: "conquista",
+    cidade: "Recife",
+  },
+  {
+    id: "lve-23",
+    mensagem: "Assinatura de streaming resgatada por 2.400 EcoPontos",
+    detalhe: "Fluxo Streaming · três meses do plano individual",
+    tipo: "resgate",
+    cidade: "Porto Alegre",
+  },
+  {
+    id: "lve-24",
+    mensagem: "Rede metropolitana ultrapassa 486 mil usuários ativos",
+    detalhe: "42 ecopontos em 8 municípios · 86,4 mil t no último ano",
+    tipo: "meta",
+    cidade: "São Paulo",
+  },
+];

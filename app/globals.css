@@ -1,0 +1,512 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ==================================================================
+   EcoRewards Design System
+   Climate Tech · editorial · sóbrio
+   Superfícies de papel no claro, superfícies de carbono no escuro.
+   ================================================================== */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* --- Superfícies e tinta (claro) --- */
+  --bg: #fbfbfa;
+  --surface: #ffffff;
+  --surface-2: #f4f6f4;
+  --surface-3: #ecefec;
+  --overlay: rgba(9, 15, 14, 0.32);
+
+  --border: #e3e6e2;
+  --border-strong: #cfd4ce;
+  --border-accent: rgba(14, 159, 110, 0.32);
+
+  --fg: #101817;
+  --fg-muted: #56615e;
+  --fg-subtle: #838d8a;
+  --fg-inverse: #fbfbfa;
+
+  /* --- Acento do ambiente (default: cidadão) --- */
+  --accent: #0e9f6e;
+  --accent-hover: #0b8a5f;
+  --accent-fg: #ffffff;
+  --accent-soft: #e6f5ef;
+  --accent-line: rgba(14, 159, 110, 0.24);
+  --accent-glow: rgba(14, 159, 110, 0.16);
+
+  /* --- Status (reservado; nunca reutilizado como série) --- */
+  --good: #15803d;
+  --good-soft: #e7f5ec;
+  --warning: #a16207;
+  --warning-soft: #faf1e0;
+  --serious: #c2410c;
+  --serious-soft: #fbeee6;
+  --critical: #b91c1c;
+  --critical-soft: #fbeaea;
+  --info: #1d4ed8;
+  --info-soft: #e8eefc;
+
+  /* --- Paleta categórica validada (6 checks, light + dark) --- */
+  --series-1: #0e9f6e;
+  --series-2: #2563eb;
+  --series-3: #c07a00;
+  --series-4: #d9539b;
+  --series-5: #6d5ae0;
+  --series-6: #db4a4a;
+
+  /* Sequencial: uma única matiz, claro -> escuro */
+  --seq-1: #d8efe5;
+  --seq-2: #a9ddc9;
+  --seq-3: #6fc6a7;
+  --seq-4: #2fa87f;
+  --seq-5: #0e7f5c;
+  --seq-6: #0a5740;
+
+  /* Divergente: âmbar <-> azul, cinza neutro no meio */
+  --div-neg-2: #b45309;
+  --div-neg-1: #e0a34a;
+  --div-mid: #d6d8d5;
+  --div-pos-1: #6b9de0;
+  --div-pos-2: #1d4ed8;
+
+  /* --- Grade e eixos: recessivos --- */
+  --grid: #e9ebe8;
+  --axis: #c8cdc7;
+
+  /* --- Elevação: discreta, quase plana --- */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 23, 0.04);
+  --shadow-sm: 0 1px 3px rgba(16, 24, 23, 0.06), 0 1px 2px rgba(16, 24, 23, 0.04);
+  --shadow-md: 0 4px 16px -4px rgba(16, 24, 23, 0.1), 0 2px 4px rgba(16, 24, 23, 0.04);
+  --shadow-lg: 0 16px 48px -12px rgba(16, 24, 23, 0.18);
+
+  /* --- Raio: contido --- */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 18px;
+
+  --header-h: 60px;
+  --sidebar-w: 248px;
+  --sidebar-w-collapsed: 64px;
+}
+
+.dark {
+  --bg: #080b0c;
+  --surface: #0f1416;
+  --surface-2: #151b1d;
+  --surface-3: #1c2325;
+  --overlay: rgba(0, 0, 0, 0.62);
+
+  --border: #202829;
+  --border-strong: #2e393b;
+  --border-accent: rgba(15, 168, 117, 0.34);
+
+  --fg: #edf2f0;
+  --fg-muted: #98a5a2;
+  --fg-subtle: #6b7876;
+  --fg-inverse: #0f1416;
+
+  --accent: #0fa875;
+  --accent-hover: #14bd85;
+  --accent-fg: #04120d;
+  --accent-soft: rgba(15, 168, 117, 0.14);
+  --accent-line: rgba(15, 168, 117, 0.3);
+  --accent-glow: rgba(15, 168, 117, 0.2);
+
+  --good: #4ade80;
+  --good-soft: rgba(74, 222, 128, 0.13);
+  --warning: #e0a83c;
+  --warning-soft: rgba(224, 168, 60, 0.13);
+  --serious: #f08a4b;
+  --serious-soft: rgba(240, 138, 75, 0.13);
+  --critical: #f2716f;
+  --critical-soft: rgba(242, 113, 111, 0.13);
+  --info: #6098f5;
+  --info-soft: rgba(96, 152, 245, 0.13);
+
+  --series-1: #0fa875;
+  --series-2: #4a82e0;
+  --series-3: #bc8829;
+  --series-4: #db6796;
+  --series-5: #7e71de;
+  --series-6: #e25555;
+
+  --seq-1: #10312a;
+  --seq-2: #14483a;
+  --seq-3: #17654c;
+  --seq-4: #1c8560;
+  --seq-5: #35a87e;
+  --seq-6: #6ec9a6;
+
+  --div-neg-2: #d99738;
+  --div-neg-1: #8a6b32;
+  --div-mid: #39413f;
+  --div-pos-1: #3a5c96;
+  --div-pos-2: #6098f5;
+
+  --grid: #1b2224;
+  --axis: #313b3d;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 20px -6px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 60px -16px rgba(0, 0, 0, 0.75);
+}
+
+/* --- Ambientes: só o acento muda; a estrutura permanece --- */
+[data-env="empresa"] {
+  --accent: #0d8f85;
+  --accent-hover: #0b7a72;
+  --accent-soft: #e4f2f1;
+  --accent-line: rgba(13, 143, 133, 0.24);
+  --accent-glow: rgba(13, 143, 133, 0.16);
+  --border-accent: rgba(13, 143, 133, 0.32);
+}
+
+.dark [data-env="empresa"],
+[data-env="empresa"].dark {
+  --accent: #17a89b;
+  --accent-hover: #1fbfb0;
+  --accent-fg: #031413;
+  --accent-soft: rgba(23, 168, 155, 0.14);
+  --accent-line: rgba(23, 168, 155, 0.3);
+  --accent-glow: rgba(23, 168, 155, 0.2);
+  --border-accent: rgba(23, 168, 155, 0.34);
+}
+
+[data-env="governo"] {
+  --accent: #24479e;
+  --accent-hover: #1c3a86;
+  --accent-soft: #e8ecf7;
+  --accent-line: rgba(36, 71, 158, 0.24);
+  --accent-glow: rgba(36, 71, 158, 0.16);
+  --border-accent: rgba(36, 71, 158, 0.32);
+}
+
+.dark [data-env="governo"],
+[data-env="governo"].dark {
+  --accent: #6491e8;
+  --accent-hover: #7ea6f0;
+  --accent-fg: #050c1c;
+  --accent-soft: rgba(100, 145, 232, 0.14);
+  --accent-line: rgba(100, 145, 232, 0.3);
+  --accent-glow: rgba(100, 145, 232, 0.2);
+  --border-accent: rgba(100, 145, 232, 0.34);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border-subtle: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-accent: var(--border-accent);
+
+  --color-ink: var(--fg);
+  --color-ink-muted: var(--fg-muted);
+  --color-ink-subtle: var(--fg-subtle);
+  --color-ink-inverse: var(--fg-inverse);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
+
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-serious: var(--serious);
+  --color-serious-soft: var(--serious-soft);
+  --color-critical: var(--critical);
+  --color-critical-soft: var(--critical-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-series-3: var(--series-3);
+  --color-series-4: var(--series-4);
+  --color-series-5: var(--series-5);
+  --color-series-6: var(--series-6);
+
+  --color-grid: var(--grid);
+  --color-axis: var(--axis);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-geist), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --spacing-header: var(--header-h);
+  --spacing-sidebar: var(--sidebar-w);
+
+  --text-display: 4.25rem;
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-h1: 2.75rem;
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.03em;
+  --text-h2: 2rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.022em;
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.015em;
+  --text-h4: 1.0625rem;
+  --text-h4--line-height: 1.35;
+  --text-h4--letter-spacing: -0.008em;
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.12em;
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  --animate-accordion-down: accordion-down 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-accordion-up: accordion-up 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-sora), var(--font-geist), sans-serif;
+    font-weight: 600;
+  }
+
+  /* Números em tabela: alinhamento vertical estável */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  ::selection {
+    background: var(--accent-glow);
+    color: var(--fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+
+  /* Scrollbar discreta */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 99px;
+    border: 3px solid var(--bg);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--fg-subtle);
+  }
+}
+
+@layer components {
+  /* Rótulo tipográfico curto, versalete espaçado */
+  .eyebrow {
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--fg-subtle);
+  }
+
+  /* Painel: superfície com fio de 1px, sem sombra pesada */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Régua vertical usada nas listas editoriais */
+  .rule-left {
+    border-left: 1px solid var(--border);
+  }
+
+  .hairline {
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Textura de grade técnica — usada com moderação em heros */
+  .grid-texture {
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .dot-texture {
+    background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Máscara de esmaecimento nas bordas de listas roláveis */
+  .fade-edges-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 24px,
+      black calc(100% - 24px),
+      transparent
+    );
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Radix expõe a altura do painel; sem ela o acordeão saltaria. */
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* MapLibre: neutraliza o chrome padrão para o design system */
+.maplibregl-ctrl-attrib {
+  background: color-mix(in srgb, var(--surface) 82%, transparent) !important;
+  color: var(--fg-subtle) !important;
+  font-size: 10px !important;
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--fg-muted) !important;
+}
+.maplibregl-ctrl-group {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.maplibregl-ctrl-group button + button {
+  border-top-color: var(--border) !important;
+}
+.maplibregl-popup-content {
+  background: var(--surface) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+  padding: 0 !important;
+}
+.maplibregl-popup-tip {
+  border-top-color: var(--surface) !important;
+  border-bottom-color: var(--surface) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
